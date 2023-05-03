@@ -3,7 +3,7 @@ from city.lot_type import LotType
 from city.road_system import RoadSystem
 
 
-class CitySpace:
+class CityGrid:
     """main class representing the city"""
 
     def __init__(self, width, height, save_source=None, map=None):

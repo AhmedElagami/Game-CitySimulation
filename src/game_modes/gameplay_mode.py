@@ -1,6 +1,6 @@
 import pygame as pg
 
-from city.city_space import CitySpace
+from city.city_grid import CityGrid
 from city_graphics.city_space_graphics import CitySpaceGraphics
 from city_graphics.lot_graphics import LotGraphics
 from game_engine_tools import WINDOW_SIZE
@@ -37,7 +37,7 @@ class GameplayMode(GameMode):
         self.construct_to_buy = None
 
         # befriended classes
-        self.city_space = CitySpace(
+        self.city_space = CityGrid(
             width, height, save_source=saved_data.get('city_space', None), map=map_)
         self.city_graphics = CitySpaceGraphics(self.city_space, width, height)
         self.simulator = SimulationEngine(self.city_space, saved_data)
