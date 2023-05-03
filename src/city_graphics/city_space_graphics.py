@@ -62,7 +62,7 @@ class CitySpaceGraphics(metaclass=Singleton):
             alpha = pg.Surface((scale, scale))
             alpha.set_alpha(128)
 
-            if not lot.can_place(construct_to_buy):
+            if not lot.canBuild(construct_to_buy):
                 alpha.fill((255, 0, 0))
             else:
                 alpha.fill((50, 50, 50))
@@ -115,7 +115,7 @@ class CitySpaceGraphics(metaclass=Singleton):
     def hovered(self, pos, mode):
         """hovered lot highlighting"""
         if mode == "road_placing":
-            self.city_space.road_system.hovered(self.get_clicked_road(pos))
+            self.city_space.road_system.handleRoadHovered(self.get_clicked_road(pos))
 
     def add_move_speed(self, move_speed):
         self.move_speed = (
