@@ -23,7 +23,7 @@ class MainMenu(GameMode):
         self.settings_button = None
         self.quit_button = None
 
-        backgrounds = ['menu_background1.jpg', 'menu_background3.png', 'menu_background4.jpg']
+        backgrounds = ['menu_background1.jpg']
 
         self.background = load_asset('MenuBackgrounds', choice(backgrounds))
         self.background = pg.transform.scale(
@@ -34,7 +34,7 @@ class MainMenu(GameMode):
     def make_main_menu(self):
         width, height = self.window.get_size()
 
-        self.menu = pgmen.Menu(title='City Simulation Game', width=width * 0.6, height=height * 0.85,
+        self.menu = pgmen.Menu(title='', width=width * 0.6, height=height * 0.85,
                                theme=self.get_theme(),
                                mouse_enabled=True, mouse_motion_selection=True)
 
@@ -175,16 +175,16 @@ class MainMenu(GameMode):
     def get_theme():
         theme = pgmen.themes.THEME_DARK.copy()
         theme.title_font = pgmen.font.FONT_FRANCHISE
-        theme.title_font_size = 70
+        theme.title_font_size = 90
         theme.title_background_color = (0, 0, 0)
         theme.title_font_color = (255, 255, 255)
         theme.title_bar_style = pgmen.widgets.MENUBAR_STYLE_NONE
-        theme.background_color = (35, 35, 35, 60)
+        theme.background_color = (70, 35, 35, 60)
         theme.widget_font = pgmen.font.FONT_FRANCHISE
         theme.cursor_color = (200, 75, 100)
         theme.widget_border_width = 3
-        theme.widget_background_color = (35, 35, 35)
+        theme.widget_background_color = (133,94,66)
         theme.widget_font_size = 44
-        theme.widget_padding = 20
+        theme.widget_padding = 30
         theme.widget_alignment = pgmen.locals.ALIGN_CENTER
         return theme
