@@ -17,15 +17,15 @@ class ZoningPanel(Panel):
                                mouse_enabled=True)
 
         self.residential_zone_button = self.menu.add.button(
-            "residential zone", self.set_zone('residential'))
+            "residential zone", self.assignZone('residential'))
         self.industrial_zone_button = self.menu.add.button(
-            "industrial zone", self.set_zone('industrial'))
+            "industrial zone", self.assignZone('industrial'))
         self.commercial_zone_button = self.menu.add.button(
-            "commercial zone", self.set_zone('commercial'))
+            "commercial zone", self.assignZone('commercial'))
 
         self.unselect_selected_widget()
 
-    def set_zone(self, zone_type):
+    def assignZone(self, zone_type):
         def change_zoning():
             if not self.game_window.set_zoning(zone_type):
                 self.unselect_selected_widget()

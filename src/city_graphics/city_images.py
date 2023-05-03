@@ -5,7 +5,7 @@ from time import time_ns
 import pygame as pg
 
 from city import HORIZONTAL
-from city.lot_type import LotType
+from city.field_type import FieldType
 from city_graphics import ROAD_WIDTH_RATIO
 from game_engine_tools import load_asset, get_asset_path, Singleton
 
@@ -16,38 +16,38 @@ class CityImages(metaclass=Singleton):
 
     def __init__(self):
         self.main_images = {
-            LotType.GRASS: load_asset('LotType', 'PNG', 'rpgTile039.png'),
-            LotType.WATER: load_asset('LotType', 'PNG', 'rpgTile029.png'),
+            FieldType.GRASS: load_asset('LotType', 'PNG', 'rpgTile039.png'),
+            FieldType.WATER: load_asset('LotType', 'PNG', 'rpgTile029.png'),
 
-            LotType.WATER_RIGHT: load_asset('LotType', 'PNG', 'rpgTile030.png'),
-            LotType.WATER_LEFT: load_asset('LotType', 'PNG', 'rpgTile028.png'),
-            LotType.WATER_UP: load_asset('LotType', 'PNG', 'rpgTile011.png'),
-            LotType.WATER_DOWN: load_asset('LotType', 'PNG', 'rpgTile045.png'),
+            FieldType.WATER_RIGHT: load_asset('LotType', 'PNG', 'rpgTile030.png'),
+            FieldType.WATER_LEFT: load_asset('LotType', 'PNG', 'rpgTile028.png'),
+            FieldType.WATER_UP: load_asset('LotType', 'PNG', 'rpgTile011.png'),
+            FieldType.WATER_DOWN: load_asset('LotType', 'PNG', 'rpgTile045.png'),
 
-            LotType.WATER_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile032.png'),
-            LotType.WATER_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile014.png'),
-            LotType.WATER_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile031.png'),
-            LotType.WATER_CORNER_RIGHT_DOWN: load_asset('LotType', 'PNG', 'rpgTile013.png'),
+            FieldType.WATER_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile032.png'),
+            FieldType.WATER_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile014.png'),
+            FieldType.WATER_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile031.png'),
+            FieldType.WATER_CORNER_RIGHT_DOWN: load_asset('LotType', 'PNG', 'rpgTile013.png'),
 
-            LotType.WATER_IN_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile010.png'),
-            LotType.WATER_IN_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile044.png'),
-            LotType.WATER_IN_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile012.png'),
-            LotType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
+            FieldType.WATER_IN_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile010.png'),
+            FieldType.WATER_IN_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile044.png'),
+            FieldType.WATER_IN_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile012.png'),
+            FieldType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
                 'LotType', 'PNG', 'rpgTile046.png')
         }
 
         self.additional_images = {
-            LotType.GRASS: [
+            FieldType.GRASS: [
                 load_asset('LotType', 'PNG', f'rpgTile{i}.png') for i in [155, 156, 158, 160]
             ],
-            LotType.WATER: [
+            FieldType.WATER: [
                 load_asset('LotType', 'island.png')
             ]}
 
         # chance of adding an addition image on specific lot type:
         self.frequency = {
-            LotType.GRASS: 0.1,
-            LotType.WATER: 0.005
+            FieldType.GRASS: 0.1,
+            FieldType.WATER: 0.005
         }
 
         self.icons = {

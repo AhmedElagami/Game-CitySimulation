@@ -52,7 +52,7 @@ class Car:
                           [x - 1, y, HORIZONTAL, -1]]
         available_turns = [
             (x, y, turn[2], turn[3]) for turn in possible_turns
-            if self.road_system.has_road(turn[0], turn[1], turn[2]) and turn[2:] != [self.road_direction, -self.car_direction]
+            if self.road_system.hasRoad(turn[0], turn[1], turn[2]) and turn[2:] != [self.road_direction, -self.car_direction]
         ]
 
         if not available_turns:

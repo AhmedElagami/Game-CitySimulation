@@ -43,7 +43,7 @@ class GameWindowPanel(Panel):
         self.menu.add.label(' ')
 
         self.menu.add.image(self.city_images.get_icon('road'), scale=scale)
-        self.road_button = self.menu.add.button("add roads", self.add_road)
+        self.road_button = self.menu.add.button("add roads", self.addRoad)
         self.menu.add.label(' ')
 
         self.menu.add.image(self.city_images.get_icon('crane'), scale=scale)
@@ -67,7 +67,7 @@ class GameWindowPanel(Panel):
         self.game_window.mode = "game_mode"
         self.disable_subpanels()
 
-    def add_road(self):
+    def addRoad(self):
         self.disable_subpanels()
 
         if self.game_window.mode != "road_placing":

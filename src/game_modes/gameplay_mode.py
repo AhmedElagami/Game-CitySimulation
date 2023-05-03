@@ -129,7 +129,7 @@ class GameplayMode(GameMode):
                 if self.construct_to_buy:
                     clicked_lot = self.city_graphics.get_clicked_lot(
                         pg.mouse.get_pos())
-                    if clicked_lot.set_construct(self.construct_to_buy):
+                    if clicked_lot.build(self.construct_to_buy):
                         self.simulator.integrate_construct(clicked_lot)
                         self.construct_to_buy = None
                         bought = True
@@ -138,7 +138,7 @@ class GameplayMode(GameMode):
                 if event.button == pg.BUTTON_RIGHT:
                     self.city_space.road_system.hovered_direction *= -1
                 elif event.button == pg.BUTTON_LEFT:
-                    self.city_space.road_clicked()
+                    self.city_space.handleRoadClicked()
 
             elif not self.zoning:
                 if event.button == pg.BUTTON_LEFT:
@@ -155,11 +155,11 @@ class GameplayMode(GameMode):
                 pg.mouse.get_pos())
             if self.button_down:
                 if self.zoning and self.simulator.can_buy(zone=self.zoning_type):
-                    if clicked_lot and clicked_lot.set_zone(self.zoning_type):
+                    if clicked_lot and clicked_lot.assignZone(self.zoning_type):
                         self.simulator.integrate_construct(clicked_lot)
 
                 elif self.bulldozing:
-                    if clicked_lot and clicked_lot.remove_construct():
+                    if clicked_lot and clicked_lot.demolish():
                         self.simulator.integrate_construct(
                             clicked_lot, remove=True)
 
@@ -215,7 +215,7 @@ class GameplayMode(GameMode):
 
     def save(self):
         def compress2save():
-            c2s = {'city_space': self.city_space.compress2save(
+            c2s = {'city_space': self.city_space.getCity(
             ), 'world_state': self.simulator.compress2save()}
             return c2s
 

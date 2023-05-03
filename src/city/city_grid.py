@@ -1,6 +1,6 @@
-from city.lot import Lot
-from city.lot_type import LotType
-from city.road_system import RoadSystem
+from city.field import Field
+from city.field_type import FieldType
+from city.roads import Roads
 
 
 class CityGrid:
@@ -11,14 +11,14 @@ class CityGrid:
         self.width = width  # amount of fields in width
 
         # roads
-        self.road_system = RoadSystem(None if save_source is None else save_source['roads'])
+        self.road_system = Roads(None if save_source is None else save_source['roads'])
 
         # lots
         self.lots = []
-        self.reset_lots(
+        self.reloadFields(
             None if save_source is None else save_source['lots'], map)
 
-    def reset_lots(self, save_source=None, map=None):
+    def reloadFields(self, save_source=None, map=None):
         """
         If no save data available - creates new lot grid.
         Else - loads lots form memory.
@@ -27,30 +27,30 @@ class CityGrid:
         if save_source is None:
             if map is not None:
                 self.lots = [
-                    [Lot(x, y, LotType(map[x][y])) for y in range(self.height)] for x in range(self.width)
+                    [Field(x, y, FieldType(map[x][y])) for y in range(self.height)] for x in range(self.width)
                 ]
 
             else:
                 self.lots = [
-                    [Lot(x, y,
-                         LotType.WATER if x == 0 or x == self.height - 1 or y == 0 or y == self.width - 1 else LotType.GRASS)
+                    [Field(x, y,
+                         FieldType.WATER if x == 0 or x == self.height - 1 or y == 0 or y == self.width - 1 else FieldType.GRASS)
                      for y in range(self.height)] for x in range(self.width)
                 ]
 
         else:
             self.lots = [
-                [Lot(x, y, None, save_source=save_source[x][y]) for y in range(self.height)] for x in range(self.width)
+                [Field(x, y, None, save_source=save_source[x][y]) for y in range(self.height)] for x in range(self.width)
             ]
 
-    def road_clicked(self):
+    def handleRoadClicked(self):
         """informs the road system that a road was clicked"""
-        self.road_system.road_clicked()
+        self.road_system.handleRoadHovered()
 
-    def compress2save(self):
+    def getCity(self):
         c2s = {
             'lots': [
-                [lot.compress2save() for lot in row] for row in self.lots
+                [Field.getFields() for lot in row] for row in self.lots
             ],
-            'roads': self.road_system.compress2save()
+            'roads': self.road_system.getRoads()
         }
         return c2s
