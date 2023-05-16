@@ -2,10 +2,11 @@ from enum import Enum
 from game_engine_tools import get_asset_path
 
 
-class ConstructType(Enum):
+class BuildingType(Enum):
     FAMILY_HOUSE = {
         'likeness': ['home'],
         'cost': 1000,
+        'size': (1, 1),
         'zone': 'residential',
         'level': {
             0: {
@@ -39,6 +40,7 @@ class ConstructType(Enum):
     SHOP = {
         'cost': 1000,
         'zone': 'service',
+        'size': (1, 1),
         'level': {
             0: {
                 'name': 'small shop',
@@ -74,6 +76,7 @@ class ConstructType(Enum):
 
     FACTORY = {
         'cost': 1000,
+        'size': (1,1),
         'zone': 'industrial',
         'level': {
             0: {
@@ -90,6 +93,7 @@ class ConstructType(Enum):
 
     STADIUM = {
         'cost': 1000,
+        'size': (2,2),
         'level': {
             0: {
                 'name': 'stadium',
@@ -143,8 +147,8 @@ class ConstructType(Enum):
 
 def get_zone_construct_type(zone_type):
     if zone_type == 'residential':
-        return ConstructType.FAMILY_HOUSE
+        return BuildingType.FAMILY_HOUSE
     if zone_type == 'service':
-        return ConstructType.SHOP
+        return BuildingType.SHOP
     if zone_type == 'industrial':
-        return ConstructType.FACTORY
+        return BuildingType.FACTORY

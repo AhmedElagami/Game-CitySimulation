@@ -3,7 +3,7 @@ from city.field_type import FieldType
 from city.road_system import RoadSystem
 
 
-class CitySpace:
+class City:
     """main class representing the city"""
 
     def __init__(self, width, height, save_source=None, map=None):

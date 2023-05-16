@@ -1,11 +1,11 @@
 import pygame_menu as pgmen
 
-from city_graphics.city_images import CityImages
+from city_graphics.assets import Assets
 from panels.panel import Panel
 
 
 class SpeedPanel(Panel):
-    city_images = CityImages()
+    city_images = Assets()
 
     def __init__(self, width, height, position, window, simulator):
         super().__init__(width, height, window)

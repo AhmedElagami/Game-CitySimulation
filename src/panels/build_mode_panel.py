@@ -1,6 +1,6 @@
 import pygame_menu as pgmen
 
-from city_graphics.city_images import CityImages
+from city_graphics.assets import Assets
 from panels.panel import Panel
 from panels.special_buildings_panel import BuySpecialBuildingPanel
 from panels.zoning_panel import ZoningPanel
@@ -11,7 +11,7 @@ class BuildModePanel(Panel):
 
     def __init__(self, width, height, position, game_window):
         super().__init__(width, height, game_window)
-        self.city_images = CityImages()
+        self.city_images = Assets()
 
         self.menu = pgmen.Menu(title='BUILD - BUY',
                                width=width, height=height,

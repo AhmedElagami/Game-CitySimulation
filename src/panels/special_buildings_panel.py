@@ -1,7 +1,7 @@
 import pygame as pg
 import pygame_menu as pgmen
 
-from constructs.construct_type import ConstructType
+from constructs.buildingType import BuildingType
 from panels.panel import Panel
 
 
@@ -23,7 +23,7 @@ class BuySpecialBuildingPanel(Panel):
                                rows=1, columns=41,
                                theme=self.get_theme(),
                                enabled=False)
-        for construct in ConstructType:
+        for construct in BuildingType:
             if not construct.value.get('zone', None):
                 self.menu.add.button(
                     construct.name.replace('_', ' '), self.building_window_function(construct))

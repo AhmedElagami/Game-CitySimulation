@@ -1,8 +1,8 @@
 from random import randint
 
 from city.field_type import FieldType
-from constructs.construct import Construct
-from constructs.construct_type import ConstructType
+from constructs.building import Building
+from constructs.buildingType import BuildingType
 
 
 class Field:
@@ -34,7 +34,7 @@ class Field:
             self.zone_type = save_source['zone_type']
             self.seed = save_source['seed']
             if not save_source['construct'] is None:
-                self.construct = Construct(construct_state=save_source['construct'])
+                self.construct = Building(construct_state=save_source['construct'])
                 self.construct_level = save_source.get('construct_level', 0)
 
     def set_zone(self, zone_type):
@@ -42,26 +42,26 @@ class Field:
             sets zone type as well as a construct according to it
             returns True if could place the building, False otherwise
         """
-        if not self.can_place(ConstructType.FAMILY_HOUSE):
+        if not self.can_place(BuildingType.FAMILY_HOUSE):
             return False
 
         self.zone_type = zone_type
         if zone_type == 'residential':
-            self.construct = Construct(ConstructType.FAMILY_HOUSE)
+            self.construct = Building(BuildingType.FAMILY_HOUSE)
         elif zone_type == 'service':
-            self.construct = Construct(ConstructType.SHOP)
+            self.construct = Building(BuildingType.SHOP)
         elif zone_type == 'industrial':
-            self.construct = Construct(ConstructType.FACTORY)
+            self.construct = Building(BuildingType.FACTORY)
         return True
 
-    def set_construct(self, construct_type):
+    def set_construct(self, BuildingType):
         """
             sets bought construct with specified type if field available
             returns True if could place the building, False otherwise
         """
-        if not self.can_place(construct_type):
+        if not self.can_place(BuildingType):
             return False
-        self.construct = Construct(construct_type)
+        self.construct = Building(BuildingType)
         self.zone_type = None
         return True
 
@@ -79,9 +79,9 @@ class Field:
         self.zone_type = None
         return True
 
-    def can_place(self, construct_type):
+    def can_place(self, BuildingType):
         """returns True if a construct can be placed on currently highlighted field"""
-        construct = Construct(construct_type=construct_type)
+        construct = Building(BuildingType=BuildingType)
         type = FieldType.GRASS
         if construct.likes('water'):
             type = FieldType.WATER

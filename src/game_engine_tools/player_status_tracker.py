@@ -6,7 +6,7 @@ class PlayerStatus:
         if save_source is None:
             self.data = {
                 'funds': 10000,
-                'population': 0,
+                'population': 100,
                 'capacity': 0,
                 'work places': 0,
                 'produce': 0,

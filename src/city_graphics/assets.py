@@ -10,7 +10,7 @@ from city_graphics import ROAD_WIDTH_RATIO
 from game_engine_tools import load_asset, get_asset_path, Singleton
 
 
-class CityImages(metaclass=Singleton):
+class Assets(metaclass=Singleton):
     """scaled and original background field images"""
     current_scale = -1
 

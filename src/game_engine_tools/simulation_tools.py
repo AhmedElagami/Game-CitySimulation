@@ -73,25 +73,6 @@ def population(field, player_status):
                 player_status.data['population'] * POPULATION_REDUCTION)
 
 
-# def update_events(field, player_status):
-    # if field.construct is not None:
-    #     if field.construct.heat >= FIRE_THRESHOLD:
-    #         if len(field.current_events) < EVENTS_LIMIT:
-    #             field.current_events.append('burning')
-    #         field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
-    #     elif 'burning' in field.current_events:
-    #         field.current_events.remove('burning')
-    #         field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
-    #     if field.construct.crime_level >= CRIME_THRESHOLD:
-    #         if len(field.current_events) < EVENTS_LIMIT:
-    #             field.current_events.append('burglary')
-    #         field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
-    #     elif 'burglary' in field.current_events:
-    #         field.current_events.remove('burglary')
-    #         field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
-    #     if 'pandemic' in field.current_events:
-    #         field.current_events.remove('pandemic')
-
 
 def satisfy_demand(player_status):
     normalize = min(player_status.data['produce'],
@@ -141,68 +122,24 @@ def normalize_satisfaction(satisfaction, old_satisfaction):
 
 # constant listing all simulation functions to be called in a complete cycle
 SIMULATIONS = [
-    # fire,
-    # security,
-    # energy,
-    # waste,
-    # water,
+    security,
     economy_change,
-    # health,
     produce,
     demand,
     population,
-    # update_events
 ]
 
 # event limit
 EVENTS_LIMIT = 10
-
-# fire related constants
-# HEAT_THRESHOLD = 5
-# HEAT_EXPANSION = 2
-# MAX_HEAT = 15
-# MIN_HEAT = -5
-# DEFAULT_TEMPERATURE_RAISE = 1
-# FIRE_THRESHOLD = 7
-# HAPPYNES_DIVISOR = 2
 
 # security related constants
 BURGLARY_APPEAL = 0.4
 MIN_CRIME = 0
 MAX_CRIME = 15
 CRIME_THRESHOLD = 7
-
-# power related constants
-# MAX_POWER_SUPPLY = 100000
-# MAX_POWER_DEMAND = -10000
-# COSTS_REDUCED_ABOVE_POWER_BORDERVAL = 0.5
-# COSTS_INCREASED_BELOW_POWER_BORDERVAL = 1.2
-# POWER_BORDERVAL = 0
-
-# water related constants
-# MAX_WATER_SUPPLY = 100000
-# MAX_WATER_DEMAND = -10000
-# COSTS_REDUCED_ABOVE_WATER_BORDERVAL = 0.5
-# COSTS_INCREASED_BELOW_WATER_BORDERVAL = 1.2
-# WATER_BORDERVAL = 0
-
-# waste related constants
-# MAX_WASTE_PILE_UP = 100000
-# MAX_WASTE_FREE_SPACE = -10000
-# COSTS_REDUCED_ABOVE_WASTE_BORDERVAL = 0.5
-# COSTS_INCREASED_BELOW_WASTE_BORDERVAL = 1.2
-# WASTE_BORDERVAL = 0
-
-# health related constants
-# HEALING_FACTOR = 5
-# MIN_HEALTH = 0
-# PANDEMIC_CHANCE = 0.1
-# PANDEMIC_COEF = 0.01
-# PANDEMIC_SEVERITY = 3
-#
 # population satisfaction constants
-POPULATION_satisfaction_COEF = 0.25
-POPULATION_REDUCTION = 0.98
+POPULATION_satisfaction_COEF = 0.5
+POPULATION_REDUCTION = 0.60
 CURRENT_PERCENT_WEIGHT = 7
 NEW_PERCENT_WEIGHT = 1
 

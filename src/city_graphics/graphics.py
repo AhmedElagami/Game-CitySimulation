@@ -1,25 +1,25 @@
 import pygame as pg
 
 from city_graphics import ROAD_WIDTH_RATIO
-from city_graphics.city_images import CityImages
-from city_graphics.field_graphics import FieldGraphics
-from city_graphics.road_graphics import RoadGraphics
+from city_graphics.assets import Assets
+from city_graphics.fieldGraphics import FieldGraphics
+from city_graphics.roadGraphics import roadGraphics
 from game_engine_tools import WINDOW_SIZE, Singleton
 
 
-class CitySpaceGraphics(metaclass=Singleton):
+class CityGraphics(metaclass=Singleton):
     GRAY = (192, 192, 192)
     AFFECTS_COLOR = 0xf4acb7
     AFFECTED_COLOR = 0xffcad4
 
     def __init__(self, city_space, width, height):
         self.city_space = city_space
-        self.city_images = CityImages()
+        self.assets = Assets()
 
-        self.road_graphics = RoadGraphics((width, height))
-        self.field_graphics = FieldGraphics((width, height))
+        self.roadGraphics = roadGraphics((width, height))
+        self.fieldGraphics = FieldGraphics((width, height))
 
-        RoadGraphics.reset()
+        roadGraphics.reset()
         FieldGraphics.reset()
 
         self.height = height  # amount of fields in height
@@ -36,18 +36,18 @@ class CitySpaceGraphics(metaclass=Singleton):
 
     def draw(self, mode, construct_to_buy, window):
         # rescale images
-        self.city_images.rescale(self.scale)
+        self.assets.rescale(self.scale)
 
         # draw fields
         for row in self.city_space.fields:
             for field in row:
-                self.field_graphics.draw_background(field, self.scale, (self.pov_x, self.pov_y), window)
+                self.fieldGraphics.draw_background(field, self.scale, (self.pov_x, self.pov_y), window)
 
         # faded picture of a construct to be placed and bought
         if construct_to_buy:
             field = self.get_clicked_field(pg.mouse.get_pos())
             image = pg.image.load(construct_to_buy.value['level'][0]['images'][0])
-            x, y = self.field_graphics.get_draw_position(field, (self.pov_x, self.pov_y), self.scale)
+            x, y = self.fieldGraphics.get_draw_position(field, (self.pov_x, self.pov_y), self.scale)
 
             # calculating faded picture's dimensions and rescaling
             offset = int(ROAD_WIDTH_RATIO * self.scale)
@@ -71,15 +71,15 @@ class CitySpaceGraphics(metaclass=Singleton):
             window.blit(alpha, (x, y))
 
         # roads
-        self.road_graphics.draw(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
+        self.roadGraphics.draw(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
 
         # constructs
         for row in self.city_space.fields:
             for field in row:
-                self.field_graphics.draw_construct(field, self.scale, (self.pov_x, self.pov_y), window)
+                self.fieldGraphics.draw_construct(field, self.scale, (self.pov_x, self.pov_y), window)
 
         # cars
-        self.road_graphics.animate_cars(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
+        self.roadGraphics.animate_cars(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
 
         # road placing drawing effect
         if mode == "road_placing":
@@ -87,7 +87,7 @@ class CitySpaceGraphics(metaclass=Singleton):
             alpha.set_alpha(128)
             alpha.fill(self.GRAY)
             window.blit(alpha, (0, 0))
-            self.road_graphics.highlight_roads(
+            self.roadGraphics.highlight_roads(
                 self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
 
         # access highlighting
@@ -159,14 +159,14 @@ class CitySpaceGraphics(metaclass=Singleton):
         if self.selected_field is None or self.selected_field.construct is None:
             return
 
-        self.field_graphics.highlight_field(self.selected_field, (self.pov_x, self.pov_y), self.scale, self.AFFECTS_COLOR, window)
+        self.fieldGraphics.highlight_field(self.selected_field, (self.pov_x, self.pov_y), self.scale, self.AFFECTS_COLOR, window)
 
         for field in self.selected_field.affects:
             if field == self.selected_field:
                 continue
-            self.field_graphics.highlight_field(field, (self.pov_x, self.pov_y), self.scale, self.AFFECTED_COLOR, window)
+            self.fieldGraphics.highlight_field(field, (self.pov_x, self.pov_y), self.scale, self.AFFECTED_COLOR, window)
 
     @staticmethod
     def set_speed(speed):
         FieldGraphics.animation_speed = 0.05 * speed
-        RoadGraphics.car_speed = 0.02 * speed
+        roadGraphics.car_speed = 0.02 * speed

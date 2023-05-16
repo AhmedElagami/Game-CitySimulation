@@ -6,11 +6,11 @@ import pygame as pg
 from city import HORIZONTAL, VERTICAL
 from city_graphics import ROAD_WIDTH_RATIO
 from city_graphics.car import Car
-from city_graphics.city_images import CityImages
+from city_graphics.assets import Assets
 from game_engine_tools import Singleton
 
 
-class RoadGraphics(metaclass=Singleton):
+class roadGraphics(metaclass=Singleton):
     HIGHLIGHT_COLOR = 0x6d597a
     PLACE_COLOR = 0xf7b267
     BLANK_COLOR = 0xeee2df
@@ -19,7 +19,7 @@ class RoadGraphics(metaclass=Singleton):
 
     cars = set()
     car_speed = 0.04
-    city_images = CityImages()
+    assets = Assets()
     map_dimensions = None
 
     def __init__(self, map_dimensions):
@@ -31,11 +31,11 @@ class RoadGraphics(metaclass=Singleton):
         cls.car_speed = 0.04
 
     def draw(self, roads, pov, scale, window):
-        picture = self.city_images.scaled_vertical
+        picture = self.assets.scaled_vertical
         for pos_x, pos_y in roads.vertical:
             self.draw_element(pos_x, pos_y, pov, scale, picture, window)
 
-        picture = self.city_images.scaled_horizontal
+        picture = self.assets.scaled_horizontal
         for pos_x, pos_y in roads.horizontal:
             self.draw_element(pos_x, pos_y, pov, scale, picture, window)
 
@@ -108,7 +108,7 @@ class RoadGraphics(metaclass=Singleton):
             self.cars.pop()
 
         for car in self.cars:
-            image = self.city_images.get_scaled_car_image(
+            image = self.assets.get_scaled_car_image(
                 car.image_type, car.road_direction, car.car_direction)
             self.draw_element(car.x, car.y, pov, scale, image, window)
 
@@ -118,7 +118,7 @@ class RoadGraphics(metaclass=Singleton):
 
     def add_car(self, roads, car_type=None, road=None, road_direction=None):
         if car_type is None:
-            car_type = self.city_images.get_random_car_type()
+            car_type = self.assets.get_random_car_type()
         if road is None:
             if (road_direction is None or road_direction == VERTICAL) and roads.vertical:
                 road = choice(list(roads.vertical))

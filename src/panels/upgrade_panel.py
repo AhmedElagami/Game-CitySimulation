@@ -1,6 +1,6 @@
 import pygame_menu as pgmen
 
-from constructs.construct_type import ConstructType
+from constructs.buildingType import BuildingType
 from panels.panel import Panel
 
 
@@ -54,7 +54,7 @@ class UpgradePanel(Panel):
 
     def upgrade(self):
         self.control = not self.control
-        if self.control and self.simulation.can_buy(construct=ConstructType[self.field.construct.type_name],
+        if self.control and self.simulation.can_buy(construct=BuildingType[self.field.construct.type_name],
                                                     level=self.field.construct_level + 1):
             self.simulation.integrate_construct(self.field, remove=True)
             self.field.construct.level_up()

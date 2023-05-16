@@ -3,7 +3,7 @@ from math import floor
 import pygame as pg
 
 from city_graphics import ROAD_WIDTH_RATIO
-from city_graphics.city_images import CityImages
+from city_graphics.assets import Assets
 from game_engine_tools import WINDOW_SIZE, Singleton
 
 
@@ -14,7 +14,7 @@ class FieldGraphics(metaclass=Singleton):
     animation_speed = 0.05
     map_dimensions = None
     zone_highlighting = False
-    city_images = CityImages()
+    assets = Assets()
 
     def __init__(self, map_dimensions):
         self.frame = 0
@@ -31,7 +31,7 @@ class FieldGraphics(metaclass=Singleton):
             return
 
         # field type pictures
-        for picture in self.city_images.get_images(field.type, field.seed):
+        for picture in self.assets.get_images(field.type, field.seed):
             window.blit(picture, (x, y))
 
     def draw_construct(self, field, scale, pov, window):
@@ -83,26 +83,26 @@ class FieldGraphics(metaclass=Singleton):
 
         if 'burning' in events:
             size = scale
-            image = self.city_images.get_animation_image(
+            image = self.assets.get_animation_image(
                 'fire', floor(self.frame) // 5, size)
             window.blit(image, (x + scale / 2 - size / 2, y))
 
         if 'unhappy' in events:
             size = int(scale / 5)
-            image = self.city_images.get_animation_image(
+            image = self.assets.get_animation_image(
                 'unhappy', floor(self.frame) // 10, size)
             window.blit(image, (x + scale / 2 - size / 2, y))
 
         if 'pandemic' in events:
             size = int(scale / 2)
-            image = self.city_images.get_animation_image(
+            image = self.assets.get_animation_image(
                 'pandemic', floor(self.frame), size)
             window.blit(
                 image, (x + scale / 2 - size / 2, y + scale / 2 - size / 2))
 
         if 'burglary' in events:
             size = int(scale / 2)
-            image = self.city_images.get_animation_image(
+            image = self.assets.get_animation_image(
                 'burglary', floor(self.frame), size)
             window.blit(
                 image, (x + scale / 2 - size / 2, y + scale / 2 - size / 2))

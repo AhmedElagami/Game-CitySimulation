@@ -1,18 +1,18 @@
 from random import choice, seed
 from time import time
 import pygame as pg
-from constructs.construct_type import ConstructType
+from constructs.buildingType import BuildingType
 
 
-class Construct:
-    def __init__(self, construct_type=None, construct_state=None):
+class Building:
+    def __init__(self, BuildingType=None, construct_state=None):
         self.image = None
         self.image_path = None
 
         if construct_state:
             self.construct_level = int(construct_state['construct_level'])
             self.type_name = construct_state['type']
-            self.type = ConstructType[self.type_name].value
+            self.type = BuildingType[self.type_name].value
 
             self.satisfaction = None if construct_state['satisfaction'] is None else float(
                 construct_state['satisfaction'])
@@ -24,8 +24,8 @@ class Construct:
             self.choose_image(path=self.past_images[-1])
         else:
             self.construct_level = 0
-            self.type_name = ''.join(str(construct_type).split('.')[1])
-            self.type = construct_type.value
+            self.type_name = ''.join(str(BuildingType).split('.')[1])
+            self.type = BuildingType.value
 
             self.satisfaction = self.type['level'][0].get(
                 'base_resident_satisfaction', None)
