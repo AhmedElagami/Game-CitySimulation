@@ -43,9 +43,7 @@ class UpgradePanel(Panel):
                 f'{key.replace("_", " ")}: {value}', max_char=30)
         self.menu.add.label(f'max level: {len(field.construct.type["level"])}')
         self.menu.add.label(
-            'Heat: ' + str(field.construct.heat), max_char=30)
-        self.menu.add.label(
-            'Crime: ' + str(field.construct.crime_level), max_char=30)
+            'Security Risk: ' + str(field.construct.crime_level), max_char=30)
         self.menu.add.label(
             'satisfaction: ' + str(field.construct.satisfaction), max_char=30)
 

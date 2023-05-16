@@ -11,7 +11,6 @@ from panels.info_panel import InfoPanel
 from panels.speed_panel import SpeedPanel
 from panels.toggle_menu import ToggleMenu
 from panels.upgrade_panel import UpgradePanel
-from panels.warning_panel import WarningPanel
 
 
 class GameplayMode(GameMode):
@@ -54,8 +53,6 @@ class GameplayMode(GameMode):
 
         self.info_panel = InfoPanel(
             250, 200, (99, 50), self, self.simulator)
-
-        self.warning_panel = WarningPanel(self, 'hello!')
 
         self.upgrade_panel = UpgradePanel(
             width=WINDOW_SIZE[0] // 2, height=WINDOW_SIZE[1] // 2, game_window=self, simulation=self.simulator)
@@ -120,9 +117,6 @@ class GameplayMode(GameMode):
         if event.type == pg.MOUSEBUTTONDOWN:
             bought = False
             self.menu_panel.option_panel.disable()
-            if self.warning_panel:
-                self.warning_panel.disable()
-                self.warning_panel = None
 
             if event.button == pg.BUTTON_LEFT:
                 self.button_down = True
@@ -175,8 +169,6 @@ class GameplayMode(GameMode):
         for panel in self.sub_panels:
             panel.draw(self.window)
 
-        if self.warning_panel:
-            self.warning_panel.draw(self.window)
 
     def set_zoning(self, zoning_type):
         FieldGraphics.zone_highlighting = True
@@ -206,12 +198,6 @@ class GameplayMode(GameMode):
         else:
             self.upgrade_panel.disable()
 
-    def show_warning(self, text):
-        """display warning popup with specified text"""
-        if self.warning_panel:
-            self.warning_panel.disable()
-            self.warning_panel = None
-        self.warning_panel = WarningPanel(self, text)
 
     def save(self):
         def compress2save():

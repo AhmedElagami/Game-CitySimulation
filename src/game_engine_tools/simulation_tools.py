@@ -11,24 +11,13 @@ def set_between(value, min_value, max_value):
     return max(min_value, min(max_value, value))
 
 
-def fire(field, player_status):
-    if field.construct is not None:
-        fire_protection = 0
-        threshold = field.construct.heat // HEAT_THRESHOLD
-        # calculating buildings fire protection
-        for affected_by in field.affected_by:
-            fire_protection += affected_by.get('fire_protection', 0)
-        fire_protection += field.construct.get('fire_protection', 0)
-        # adequately increasing temperature
-        field.construct.heat += field.construct.get(
-            'temperature_raise', DEFAULT_TEMPERATURE_RAISE) - fire_protection
-        # if passed a threshold - expands additionally
-        if field.construct.heat // HEAT_THRESHOLD > threshold:
-            field.construct.heat += randint(1, HEAT_EXPANSION)
-        # setting heat to stay between min and max
-        field.construct.heat = set_between(
-            field.construct.heat, MIN_HEAT, MAX_HEAT)
 
+def calculate_income(construct, player_status):
+    income = construct.get('income', 0)
+    if income > 0:
+        income /= 1 + np.abs(player_status.data['goods'] - player_status.data['population'] * GOODS_PER_PERSON) / max(
+            player_status.data['population'] * GOODS_PER_PERSON, 1)
+    return income
 
 def security(field, player_status):
     if field.construct is not None:
@@ -43,36 +32,6 @@ def security(field, player_status):
         field.construct.crime_level = set_between(
             field.construct.crime_level, MIN_CRIME, MAX_CRIME)
 
-
-def energy(field, player_status):
-    if field.construct is not None:
-        player_status.data['power'] += field.construct.get('energy_change', 0)
-        player_status.data['power'] = set_between(
-            player_status.data['power'], MAX_POWER_DEMAND, MAX_POWER_SUPPLY)
-
-
-def waste(field, player_status):
-    if field.construct is not None:
-        player_status.data['waste'] += field.construct.get('waste_change', 0)
-        player_status.data['waste'] = set_between(
-            player_status.data['waste'], MAX_WASTE_FREE_SPACE, MAX_WASTE_PILE_UP)
-
-
-def water(field, player_status):
-    if field.construct is not None:
-        player_status.data['water'] += field.construct.get('water_change', 0)
-        player_status.data['water'] = set_between(
-            player_status.data['water'], MAX_WATER_DEMAND, MAX_WATER_SUPPLY)
-
-
-def calculate_income(construct, player_status):
-    income = construct.get('income', 0)
-    if income > 0:
-        income /= 1 + np.abs(player_status.data['goods'] - player_status.data['population'] * GOODS_PER_PERSON) / max(
-            player_status.data['population'] * GOODS_PER_PERSON, 1)
-    return income
-
-
 def economy_change(field, player_status):
     if field.construct is not None:
         money_change = field.construct.get('taxation', 0)
@@ -84,18 +43,6 @@ def economy_change(field, player_status):
         player_status.data['funds'] = set_between(
             player_status.data['funds'], MIN_MONEY, MAX_MONEY)
 
-
-def health(field, player_status):
-    if field.construct is not None:
-        player_status.data['health'] += field.construct.get('people_involved', 0) * player_status.density()
-        player_status.data['health'] -= field.construct.get('patients', 0) * HEALING_FACTOR
-        player_status.data['health'] = set_between(
-            player_status.data['health'], MIN_HEALTH, None)
-        if random() < PANDEMIC_CHANCE * player_status.density():
-            for _ in range(PANDEMIC_SEVERITY):
-                if len(field.current_events) < EVENTS_LIMIT:
-                    field.current_events.append('pandemic')
-            player_status.data['health'] *= 1 + PANDEMIC_COEF
 
 
 def produce(field, player_status):
@@ -126,24 +73,24 @@ def population(field, player_status):
                 player_status.data['population'] * POPULATION_REDUCTION)
 
 
-def update_events(field, player_status):
-    if field.construct is not None:
-        if field.construct.heat >= FIRE_THRESHOLD:
-            if len(field.current_events) < EVENTS_LIMIT:
-                field.current_events.append('burning')
-            field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
-        elif 'burning' in field.current_events:
-            field.current_events.remove('burning')
-            field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
-        if field.construct.crime_level >= CRIME_THRESHOLD:
-            if len(field.current_events) < EVENTS_LIMIT:
-                field.current_events.append('burglary')
-            field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
-        elif 'burglary' in field.current_events:
-            field.current_events.remove('burglary')
-            field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
-        if 'pandemic' in field.current_events:
-            field.current_events.remove('pandemic')
+# def update_events(field, player_status):
+    # if field.construct is not None:
+    #     if field.construct.heat >= FIRE_THRESHOLD:
+    #         if len(field.current_events) < EVENTS_LIMIT:
+    #             field.current_events.append('burning')
+    #         field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
+    #     elif 'burning' in field.current_events:
+    #         field.current_events.remove('burning')
+    #         field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
+    #     if field.construct.crime_level >= CRIME_THRESHOLD:
+    #         if len(field.current_events) < EVENTS_LIMIT:
+    #             field.current_events.append('burglary')
+    #         field.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
+    #     elif 'burglary' in field.current_events:
+    #         field.current_events.remove('burglary')
+    #         field.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
+    #     if 'pandemic' in field.current_events:
+    #         field.current_events.remove('pandemic')
 
 
 def satisfy_demand(player_status):
@@ -194,30 +141,30 @@ def normalize_satisfaction(satisfaction, old_satisfaction):
 
 # constant listing all simulation functions to be called in a complete cycle
 SIMULATIONS = [
-    fire,
-    security,
-    energy,
-    waste,
-    water,
+    # fire,
+    # security,
+    # energy,
+    # waste,
+    # water,
     economy_change,
-    health,
+    # health,
     produce,
     demand,
     population,
-    update_events
+    # update_events
 ]
 
 # event limit
 EVENTS_LIMIT = 10
 
 # fire related constants
-HEAT_THRESHOLD = 5
-HEAT_EXPANSION = 2
-MAX_HEAT = 15
-MIN_HEAT = -5
-DEFAULT_TEMPERATURE_RAISE = 1
-FIRE_THRESHOLD = 7
-HAPPYNES_DIVISOR = 2
+# HEAT_THRESHOLD = 5
+# HEAT_EXPANSION = 2
+# MAX_HEAT = 15
+# MIN_HEAT = -5
+# DEFAULT_TEMPERATURE_RAISE = 1
+# FIRE_THRESHOLD = 7
+# HAPPYNES_DIVISOR = 2
 
 # security related constants
 BURGLARY_APPEAL = 0.4
@@ -226,33 +173,33 @@ MAX_CRIME = 15
 CRIME_THRESHOLD = 7
 
 # power related constants
-MAX_POWER_SUPPLY = 100000
-MAX_POWER_DEMAND = -10000
-COSTS_REDUCED_ABOVE_POWER_BORDERVAL = 0.5
-COSTS_INCREASED_BELOW_POWER_BORDERVAL = 1.2
-POWER_BORDERVAL = 0
+# MAX_POWER_SUPPLY = 100000
+# MAX_POWER_DEMAND = -10000
+# COSTS_REDUCED_ABOVE_POWER_BORDERVAL = 0.5
+# COSTS_INCREASED_BELOW_POWER_BORDERVAL = 1.2
+# POWER_BORDERVAL = 0
 
 # water related constants
-MAX_WATER_SUPPLY = 100000
-MAX_WATER_DEMAND = -10000
-COSTS_REDUCED_ABOVE_WATER_BORDERVAL = 0.5
-COSTS_INCREASED_BELOW_WATER_BORDERVAL = 1.2
-WATER_BORDERVAL = 0
+# MAX_WATER_SUPPLY = 100000
+# MAX_WATER_DEMAND = -10000
+# COSTS_REDUCED_ABOVE_WATER_BORDERVAL = 0.5
+# COSTS_INCREASED_BELOW_WATER_BORDERVAL = 1.2
+# WATER_BORDERVAL = 0
 
 # waste related constants
-MAX_WASTE_PILE_UP = 100000
-MAX_WASTE_FREE_SPACE = -10000
-COSTS_REDUCED_ABOVE_WASTE_BORDERVAL = 0.5
-COSTS_INCREASED_BELOW_WASTE_BORDERVAL = 1.2
-WASTE_BORDERVAL = 0
+# MAX_WASTE_PILE_UP = 100000
+# MAX_WASTE_FREE_SPACE = -10000
+# COSTS_REDUCED_ABOVE_WASTE_BORDERVAL = 0.5
+# COSTS_INCREASED_BELOW_WASTE_BORDERVAL = 1.2
+# WASTE_BORDERVAL = 0
 
 # health related constants
-HEALING_FACTOR = 5
-MIN_HEALTH = 0
-PANDEMIC_CHANCE = 0.1
-PANDEMIC_COEF = 0.01
-PANDEMIC_SEVERITY = 3
-
+# HEALING_FACTOR = 5
+# MIN_HEALTH = 0
+# PANDEMIC_CHANCE = 0.1
+# PANDEMIC_COEF = 0.01
+# PANDEMIC_SEVERITY = 3
+#
 # population satisfaction constants
 POPULATION_satisfaction_COEF = 0.25
 POPULATION_REDUCTION = 0.98

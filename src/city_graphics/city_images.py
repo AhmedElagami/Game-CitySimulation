@@ -68,9 +68,6 @@ class CityImages(metaclass=Singleton):
         }
 
         self.animation_images = {
-            'fire': [load_asset('Animations', f'flame{i}.png') for i in range(5)],
-            'unhappy': [load_asset('Status', 'icon_sad.png'), load_asset('Status', 'icon_cry.png')],
-            'pandemic': [load_asset('Animations', f'coronavirus-red-rim-light-pulse_{i}.png') for i in range(7)],
             'burglary': [load_asset('Animations', 'Roll jump', f'rj_{i:03}.png') for i in range(37)]
         }
 

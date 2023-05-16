@@ -5,18 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c048ae3-7ae2-4e18-9ac0-9838c992f93c" name="Changes" comment="Initial Commit">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/goodgame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/goodgame.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/tile.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FieldType/PNG/tile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LotType/island.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FieldType/island.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city/city_space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city/city_space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city/lot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city/field.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city/lot_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city/field_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city/road_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city/road_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_028.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_029.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_030.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_032.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_034.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/rj_036.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Roll jump/visit_bevouliin_dot_com.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/coronavirus-red-rim-light-pulse_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/flame0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/flame1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/flame2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/flame3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/flame4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maps/map2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SaveFiles/save1.json" beforeDir="false" afterPath="$PROJECT_DIR$/SaveFiles/save1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SaveFiles/save_manager_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SaveFiles/save_manager_data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/city_graphics/city_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city_graphics/city_images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city_graphics/city_space_graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city_graphics/city_space_graphics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city_graphics/lot_graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city_graphics/field_graphics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/road_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/road_graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/simulation_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/simulation_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constructs/construct_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constructs/construct_type.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game_engine_tools/simulation_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/simulation_tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game_modes/gameplay_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_modes/gameplay_mode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/panels/game_window_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/game_window_panel.py" afterDir="false" />
@@ -30,11 +76,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -43,19 +89,51 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2PsgWesnksrDCceAFMFt6TzN6YK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "/home/eealmah/PycharmProjects/goodgame/Assets/LotType/PNG"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/eealmah/PycharmProjects/goodgame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Assets/LotType/PNG" />
       <recent name="$PROJECT_DIR$/Assets/MenuBackgrounds" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c048ae3-7ae2-4e18-9ac0-9838c992f93c" name="Changes" comment="Initial Commit" />
+      <created>1684251237089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684251237089</updated>
+      <workItem from="1684251243685" duration="2925000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

@@ -47,10 +47,6 @@ class GameWindowPanel(Panel):
             "build mode", self.build_mode)
         self.menu.add.label(' ')
 
-        self.build_mode_button = self.menu.add.button(
-            "access", self.access)
-        self.menu.add.label(' ')
-
         self.options_button = self.menu.add.button(
             "options", self.options)
         self.menu.add.label(' ')
