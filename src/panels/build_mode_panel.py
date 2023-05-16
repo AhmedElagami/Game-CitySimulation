@@ -35,27 +35,22 @@ class BuildModePanel(Panel):
 
         # BUTTONS
         scale = (0.075, 0.075)
-        self.menu.add.image(self.city_images.get_icon(
-            'modern-city'), scale=scale)
         self.zoning_button = self.menu.add.button(
-            "zone buildings", self.zone_buildings)
+            "Zones", self.zone_buildings)
 
         self.zoning_button.select(False)
 
         self.menu.add.label(' ')
         self.menu.add.label(' ')
 
-        self.menu.add.image(self.city_images.get_icon('capitol'), scale=scale)
         self.buy_building_button = self.menu.add.button(
-            "special buildings", self.special_buildings)
+            "Buildings", self.special_buildings)
 
         self.menu.add.label(' ')
         self.menu.add.label(' ')
 
-        self.menu.add.image(
-            self.city_images.get_icon('bulldozer'), scale=scale)
         self.bulldoze_button = self.menu.add.button(
-            "bulldoze", self.bulldoze)
+            "demolish", self.bulldoze)
 
         self.menu.add.label(' ')
 

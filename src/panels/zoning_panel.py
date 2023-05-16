@@ -20,8 +20,8 @@ class ZoningPanel(Panel):
             "residential zone", self.set_zone('residential'))
         self.industrial_zone_button = self.menu.add.button(
             "industrial zone", self.set_zone('industrial'))
-        self.commercial_zone_button = self.menu.add.button(
-            "commercial zone", self.set_zone('commercial'))
+        self.service_zone_button = self.menu.add.button(
+            "service zone", self.set_zone('service'))
 
         self.unselect_selected_widget()
 

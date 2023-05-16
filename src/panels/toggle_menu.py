@@ -11,7 +11,7 @@ class ToggleMenu(Panel):
         self.subpanel = panel
         self.menu = pgmen.Menu(
             title="toggle", theme=self.get_theme(), width=width, height=height, position=position)
-        self.button = self.menu.add.button("show menu", self.toggle)
+        self.button = self.menu.add.button("menu", self.toggle)
 
     def toggle(self):
         if self.subpanel.menu.is_enabled():

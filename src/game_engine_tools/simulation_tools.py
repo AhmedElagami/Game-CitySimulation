@@ -34,7 +34,7 @@ def security(lot, player_status):
     if lot.construct is not None:
         security = 0
         coefficient = lot.construct.get('burglary_appeal', 0.5)
-        coefficient *= 1 if lot.construct.happiness is None else lot.construct.happiness
+        coefficient *= 1 if lot.construct.satisfaction is None else lot.construct.satisfaction
         crime_appeal = BURGLARY_APPEAL * coefficient
         for affected_by in lot.affected_by:
             security += affected_by.get('security', 0.05)
@@ -76,8 +76,8 @@ def calculate_income(construct, player_status):
 def economy_change(lot, player_status):
     if lot.construct is not None:
         money_change = lot.construct.get('taxation', 0)
-        taxes_multiplier = min(lot.construct.happiness / HAPPYNESS_FOR_FULL_TAXES,
-                               1) if not lot.construct.happiness is None else 1
+        taxes_multiplier = min(lot.construct.satisfaction / satisfaction_FOR_FULL_TAXES,
+                               1) if not lot.construct.satisfaction is None else 1
         money_change *= (1 + player_status.data['taxation']) * taxes_multiplier
         money_change += calculate_income(lot.construct, player_status)
         player_status.data['funds'] += int(money_change)
@@ -112,16 +112,16 @@ def population(lot, player_status):
     if lot.construct is not None:
         capacity = player_status.data['capacity']
         populus = player_status.data['population']
-        happyness = player_status.data['resident_happyness']
-        if populus < capacity and random() < POPULATION_HAPPINESS_COEF * happyness:
+        satisfaction = player_status.data['resident_satisfaction']
+        if populus < capacity and random() < POPULATION_satisfaction_COEF * satisfaction:
             populus = randint(populus, int(set_between(
-                capacity * POPULATION_HAPPINESS_COEF * happyness,
+                capacity * POPULATION_satisfaction_COEF * satisfaction,
                 (populus + capacity) // 2,
                 capacity
             ))
                               )
             player_status.data['population'] = populus
-        if random() > happyness:
+        if random() > satisfaction:
             player_status.data['population'] = int(
                 player_status.data['population'] * POPULATION_REDUCTION)
 
@@ -131,17 +131,17 @@ def update_events(lot, player_status):
         if lot.construct.heat >= FIRE_THRESHOLD:
             if len(lot.current_events) < EVENTS_LIMIT:
                 lot.current_events.append('burning')
-            lot.construct.multiply_happiness(1 / HAPPYNES_DIVISOR)
+            lot.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
         elif 'burning' in lot.current_events:
             lot.current_events.remove('burning')
-            lot.construct.multiply_happiness(HAPPYNES_DIVISOR)
+            lot.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
         if lot.construct.crime_level >= CRIME_THRESHOLD:
             if len(lot.current_events) < EVENTS_LIMIT:
                 lot.current_events.append('burglary')
-            lot.construct.multiply_happiness(1 / HAPPYNES_DIVISOR)
+            lot.construct.multiply_satisfaction(1 / HAPPYNES_DIVISOR)
         elif 'burglary' in lot.current_events:
             lot.current_events.remove('burglary')
-            lot.construct.multiply_happiness(HAPPYNES_DIVISOR)
+            lot.construct.multiply_satisfaction(HAPPYNES_DIVISOR)
         if 'pandemic' in lot.current_events:
             lot.current_events.remove('pandemic')
 
@@ -157,7 +157,7 @@ def satisfy_demand(player_status):
 
 
 def calculate_demands(player_status):
-    player_status.data['commercial demand'] = level_to_demand(
+    player_status.data['service demand'] = level_to_demand(
         player_status.data['produce'] + max(0, player_status.data['population'] * GOODS_PER_PERSON - player_status.data[
             'goods']) / PRODUCE_TO_GOODS, PRODUCE_THRESHOLDS)
     player_status.data['industrial demand'] = level_to_demand(
@@ -166,8 +166,8 @@ def calculate_demands(player_status):
         player_status.data['goods'] - player_status.data['population'] * GOODS_PER_PERSON, GOODS_THRESHOLDS)
 
 
-def calculate_happiness(lot):
-    return 0 if lot.construct is None or lot.construct.happiness is None else lot.construct.happiness
+def calculate_satisfaction(lot):
+    return 0 if lot.construct is None or lot.construct.satisfaction is None else lot.construct.satisfaction
 
 
 def level_to_demand(value, threshold):
@@ -178,18 +178,18 @@ def level_to_demand(value, threshold):
 
 def top_demand(player_status):
     top_demands = DEMAND_LEVEL[-2:]
-    return player_status.data['commercial demand'] in top_demands and player_status.data[
+    return player_status.data['service demand'] in top_demands and player_status.data[
         'industrial demand'] in top_demands
 
 
-def normalize_happiness(happiness, old_happiness):
-    happiness = (happiness * NEW_PERCENT_WEIGHT + old_happiness * CURRENT_PERCENT_WEIGHT) / (
+def normalize_satisfaction(satisfaction, old_satisfaction):
+    satisfaction = (satisfaction * NEW_PERCENT_WEIGHT + old_satisfaction * CURRENT_PERCENT_WEIGHT) / (
             NEW_PERCENT_WEIGHT + CURRENT_PERCENT_WEIGHT)
-    happiness = (happiness + 1) ** 0.25
-    happiness = -1 / happiness + 1
-    if happiness >= 0.9994:
-        happiness = 1
-    return happiness
+    satisfaction = (satisfaction + 1) ** 0.25
+    satisfaction = -1 / satisfaction + 1
+    if satisfaction >= 0.9994:
+        satisfaction = 1
+    return satisfaction
 
 
 # constant listing all simulation functions to be called in a complete cycle
@@ -253,14 +253,14 @@ PANDEMIC_CHANCE = 0.1
 PANDEMIC_COEF = 0.01
 PANDEMIC_SEVERITY = 3
 
-# population happiness constants
-POPULATION_HAPPINESS_COEF = 0.25
+# population satisfaction constants
+POPULATION_satisfaction_COEF = 0.25
 POPULATION_REDUCTION = 0.98
 CURRENT_PERCENT_WEIGHT = 7
 NEW_PERCENT_WEIGHT = 1
 
-# happiness and taxes correlation constants
-HAPPYNESS_FOR_FULL_TAXES = 3
+# satisfaction and taxes correlation constants
+satisfaction_FOR_FULL_TAXES = 3
 MIN_MONEY = 0
 MAX_MONEY = 1e9
 

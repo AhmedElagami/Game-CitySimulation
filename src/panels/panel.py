@@ -13,13 +13,17 @@ class Panel:
         theme.title = False
         theme.title_font = pgmen.font.FONT_FRANCHISE
         theme.title_font_size = 40
-        theme.title_font_color = (230, 230, 230, 80)
-        theme.background_color = (168, 218, 220, 200)
-        theme.title_bar_style = pgmen.widgets.MENUBAR_STYLE_NONE
-        theme.widget_font = pgmen.font.FONT_FRANCHISE
-        theme.cursor_color = (200, 75, 100)
+        # theme.title_font_color = (230, 230, 230, 80)
+        # theme.background_color = (168, 218, 220, 200)
+        # theme.cursor_color = (200, 75, 100)
+        theme.background_color = (153, 204, 255, 60)  # Light Blue for a calming background
+        theme.cursor_color = (0, 102, 34)  # Dark Green for the cursor
+        theme.title_background_color = (0, 51, 102)  # Dark Blue for contrast
+        theme.title_font_color = (255, 255, 255)  # White for readability against dark blue
         theme.widget_font_size = 25
         theme.widget_font_color = (255, 255, 255)
+        theme.title_bar_style = pgmen.widgets.MENUBAR_STYLE_NONE
+        theme.widget_font = pgmen.font.FONT_FRANCHISE
         return theme
 
     def draw(self, window):

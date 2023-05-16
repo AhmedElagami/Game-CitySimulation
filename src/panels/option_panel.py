@@ -16,11 +16,6 @@ class OptionPanel(Panel):
         self.menu.add.button("save", self.save)
         self.menu.add.button("main menu", self.main_menu)
 
-        self.menu.add.label('')
-        self.menu.add.button('volume up', volume_up)
-        self.menu.add.button('volume down', volume_down)
-        self.menu.add.label('')
-
         self.unselect_selected_widget()
 
     def main_menu(self):

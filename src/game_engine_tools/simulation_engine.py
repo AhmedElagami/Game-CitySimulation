@@ -4,7 +4,7 @@ from constructs.construct_type import get_zone_construct_type
 from game_engine_tools.player_status_tracker import PlayerStatus
 from . import make_safe_range
 from .road_graph import RoadNetGraph
-from .simulation_tools import MONEY_RETURN_PERCENT, SIMULATIONS, calculate_happiness, normalize_happiness, \
+from .simulation_tools import MONEY_RETURN_PERCENT, SIMULATIONS, calculate_satisfaction, normalize_satisfaction, \
     satisfy_demand, calculate_demands
 
 
@@ -32,15 +32,15 @@ class SimulationEngine:
         if self.fps_in_cycle >= self.fps_per_cycle:
             self.road_graph.rebuild_references()
             self.fps_in_cycle = 0
-            old_happiness = self.player_status.data['resident_happyness']
-            self.player_status.data['resident_happyness'] = 0
+            old_satisfaction = self.player_status.data['resident_satisfaction']
+            self.player_status.data['resident_satisfaction'] = 0
             for row in self.city_space.lots:
                 for lot in row:
                     for simulation in SIMULATIONS:
                         simulation(lot, self.player_status)
-                    self.player_status.data['resident_happyness'] += calculate_happiness(lot)
-            self.player_status.data['resident_happyness'] = normalize_happiness(
-                self.player_status.data['resident_happyness'], old_happiness)
+                    self.player_status.data['resident_satisfaction'] += calculate_satisfaction(lot)
+            self.player_status.data['resident_satisfaction'] = normalize_satisfaction(
+                self.player_status.data['resident_satisfaction'], old_satisfaction)
             satisfy_demand(self.player_status)
             calculate_demands(self.player_status)
         else:
@@ -68,8 +68,8 @@ class SimulationEngine:
                     self.player_status.data['capacity'] += people_involved if not remove else -people_involved
                 construct_range = int(construct.get('range', 0))
                 pollution = float(construct.get('pollution', 0))
-                happiness_multiplier = float(construct.get(
-                    'resident_happiness_multiplier', 1))
+                satisfaction_multiplier = float(construct.get(
+                    'resident_satisfaction_multiplier', 1))
 
                 ind = [
                     (i, row.index(lot))
@@ -88,11 +88,11 @@ class SimulationEngine:
                                 affected_lot.unpolluted /= (1 - pollution)
                             else:
                                 affected_lot.unpolluted *= (1 - pollution)
-                            if affected_lot.construct is not None and affected_lot.construct.happiness is not None:
+                            if affected_lot.construct is not None and affected_lot.construct.satisfaction is not None:
                                 if remove:
-                                    affected_lot.construct.happiness /= happiness_multiplier
+                                    affected_lot.construct.satisfaction /= satisfaction_multiplier
                                 else:
-                                    affected_lot.construct.happiness *= happiness_multiplier
+                                    affected_lot.construct.satisfaction *= satisfaction_multiplier
 
                 if remove:
                     self.funds_change_by(lot.construct, -MONEY_RETURN_PERCENT)
@@ -100,8 +100,8 @@ class SimulationEngine:
                     self.funds_change_by(lot.construct)
                     if lot.construct.likes('home'):
                         for affecting_construct in list(lot.affected_by):
-                            lot.construct.happiness *= affecting_construct.get(
-                                'resident_happiness_multiplier', 1)
+                            lot.construct.satisfaction *= affecting_construct.get(
+                                'resident_satisfaction_multiplier', 1)
 
     def change_speed(self, ind):
         self.fps_per_cycle = self.FPS_PER_CYCLE_OPTIONS[ind]

@@ -50,10 +50,10 @@ class GameplayMode(GameMode):
             menu_panel_width, menu_panel_height, self)
 
         self.toggle_menu = ToggleMenu(
-            width=menu_panel_width, height=50, game_window=self, position=(0, 100), panel=self.menu_panel)
+            width=menu_panel_width, height=50, game_window=self, position=(0, 10), panel=self.menu_panel)
 
         self.info_panel = InfoPanel(
-            250, 400, (99, 50), self, self.simulator)
+            250, 200, (99, 50), self, self.simulator)
 
         self.warning_panel = WarningPanel(self, 'hello!')
 
@@ -61,7 +61,7 @@ class GameplayMode(GameMode):
             width=WINDOW_SIZE[0] // 2, height=WINDOW_SIZE[1] // 2, game_window=self, simulation=self.simulator)
 
         self.speed_panel = SpeedPanel(
-            width=250, height=100, window=self, position=(99, 8), simulator=self.simulator)
+            width=250, height=100, window=self, position=(10, 4), simulator=self.simulator)
 
         self.sub_panels = [self.menu_panel, self.toggle_menu,
                            self.info_panel, self.upgrade_panel, self.speed_panel]

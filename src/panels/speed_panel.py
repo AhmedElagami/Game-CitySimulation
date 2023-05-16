@@ -22,16 +22,12 @@ class SpeedPanel(Panel):
 
         self.buttons = []
         # speed buttons
-        self.menu.add.image(self.city_images.get_icon('halt'), scale=scale)
         self.buttons += [self.menu.add.button('0x', self.set_speed(0))]
 
-        self.menu.add.image(self.city_images.get_icon('walk'), scale=scale)
         self.buttons += [self.menu.add.button('1x', self.set_speed(1))]
 
-        self.menu.add.image(self.city_images.get_icon('run'), scale=scale)
         self.buttons += [self.menu.add.button('2x', self.set_speed(2))]
 
-        self.menu.add.image(self.city_images.get_icon('running-ninja'), scale=scale)
         self.buttons += [self.menu.add.button('3x', self.set_speed(3))]
 
         self.buttons[1].select(update_menu=True)

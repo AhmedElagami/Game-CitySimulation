@@ -14,8 +14,8 @@ class Construct:
             self.type_name = construct_state['type']
             self.type = ConstructType[self.type_name].value
 
-            self.happiness = None if construct_state['happiness'] is None else float(
-                construct_state['happiness'])
+            self.satisfaction = None if construct_state['satisfaction'] is None else float(
+                construct_state['satisfaction'])
             self.heat = bool(construct_state['heat'])
             self.crime_level = int(construct_state['crime_level'])
             self.waste = int(construct_state['waste'])
@@ -27,8 +27,8 @@ class Construct:
             self.type_name = ''.join(str(construct_type).split('.')[1])
             self.type = construct_type.value
 
-            self.happiness = self.type['level'][0].get(
-                'base_resident_happiness', None)
+            self.satisfaction = self.type['level'][0].get(
+                'base_resident_satisfaction', None)
             self.heat = False
             self.crime_level = 0
             self.waste = 0
@@ -82,15 +82,15 @@ class Construct:
     def likes(self, cmp_likeness):
         return cmp_likeness in self.get('likeness', [])
 
-    def multiply_happiness(self, by):
-        if self.happiness is not None:
-            self.happiness *= by
+    def multiply_satisfaction(self, by):
+        if self.satisfaction is not None:
+            self.satisfaction *= by
 
     def compress2save(self):
         return {
             'construct_level': self.construct_level,
             'type': self.type_name,
-            'happiness': self.happiness,
+            'satisfaction': self.satisfaction,
             'heat': self.heat,
             'crime_level': self.crime_level,
             'waste': self.waste,

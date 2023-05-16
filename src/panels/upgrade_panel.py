@@ -47,7 +47,7 @@ class UpgradePanel(Panel):
         self.menu.add.label(
             'Crime: ' + str(lot.construct.crime_level), max_char=30)
         self.menu.add.label(
-            'Happiness: ' + str(lot.construct.happiness), max_char=30)
+            'satisfaction: ' + str(lot.construct.satisfaction), max_char=30)
 
         self.menu.add.label(
             f'COST: {lot.construct.type["cost"]}')

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c048ae3-7ae2-4e18-9ac0-9838c992f93c" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/Assets/LotType/PNG/tile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MenuBackgrounds/main_background.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile028.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile029.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile030.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile032.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile034.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile036.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile037.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile038.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile039.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile040.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile041.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile045.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile046.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile155.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile156.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile157.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile158.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile159.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile163.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile164.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile175.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile176.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile177.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile178.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile179.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile181.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile195.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile196.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile197.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile198.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LotType/PNG/rpgTile199.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MenuBackgrounds/menu_background3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MenuBackgrounds/menu_background4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SaveFiles/save1.json" beforeDir="false" afterPath="$PROJECT_DIR$/SaveFiles/save1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SaveFiles/save_manager_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SaveFiles/save_manager_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/city/lot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city/lot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/city_graphics/city_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city_graphics/city_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/city_graphics/lot_graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/city_graphics/lot_graphics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constructs/construct.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constructs/construct.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constructs/construct_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constructs/construct_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/player_status_tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/player_status_tracker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/save_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/save_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/simulation_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/simulation_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_engine_tools/simulation_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_engine_tools/simulation_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_modes/gameplay_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_modes/gameplay_mode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_modes/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_modes/main_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/build_mode_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/build_mode_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/game_window_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/game_window_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/info_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/info_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/option_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/option_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/speed_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/speed_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/toggle_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/toggle_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/upgrade_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/upgrade_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panels/zoning_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/panels/zoning_panel.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/home/eealmah/PycharmProjects/goodgame/Assets/LotType/PNG"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Assets/LotType/PNG" />
+      <recent name="$PROJECT_DIR$/Assets/MenuBackgrounds" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

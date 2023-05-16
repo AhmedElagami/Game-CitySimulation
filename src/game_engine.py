@@ -15,17 +15,8 @@ class GameEngine:
     def __init__(self):
         self.running = False
         pg.init()
-        pg.display.set_caption('City Simulation Game')
-        pg.display.set_icon(load_asset('House', 'H01.png'))
-        try:
-            pg.mixer.music.load(os.path.join(
-                'Assets', 'Music', 'background_music.ogg'))
-            pg.mixer.music.set_volume(0.2)
-            pg.mixer.music.play()
-        except Exception as e:
-            print("couldn't play the music")
-            print(e)
-            pass  # if music drivers don't work - don't play the music
+        pg.display.set_caption('Gridopolis')
+        pg.display.set_icon(load_asset('House', 'H01.png')) # TODO change background
 
         self.window = pg.display.set_mode(WINDOW_SIZE)
         self.clock = pg.time.Clock()

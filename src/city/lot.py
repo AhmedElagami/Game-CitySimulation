@@ -48,7 +48,7 @@ class Lot:
         self.zone_type = zone_type
         if zone_type == 'residential':
             self.construct = Construct(ConstructType.FAMILY_HOUSE)
-        elif zone_type == 'commercial':
+        elif zone_type == 'service':
             self.construct = Construct(ConstructType.SHOP)
         elif zone_type == 'industrial':
             self.construct = Construct(ConstructType.FACTORY)

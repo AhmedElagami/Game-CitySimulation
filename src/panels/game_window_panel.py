@@ -12,9 +12,9 @@ class GameWindowPanel(Panel):
     """main panel on the left side"""
     city_images = CityImages()
 
-    def __init__(self, width, height, game_window, position=(100, 100)):
+    def __init__(self, width, height, game_window, position=(100, 99)):
         super().__init__(width, height, game_window)
-        self.menu = pgmen.Menu(title='CITY SIMULATION GAME',
+        self.menu = pgmen.Menu(title='Gridopolis',
                                width=width, height=height,
                                position=(0, 0),
                                theme=self.get_theme(),
@@ -36,29 +36,21 @@ class GameWindowPanel(Panel):
 
         # BUTTONS
         scale = (0.1, 0.1)
-        self.menu.add.image(self.city_images.get_icon(
-            'play-button'), scale=scale, onselect=self.play)
         self.play_button = self.menu.add.button("play", self.play)
         self.play_button.set_controls()
         self.menu.add.label(' ')
 
-        self.menu.add.image(self.city_images.get_icon('road'), scale=scale)
         self.road_button = self.menu.add.button("add roads", self.add_road)
         self.menu.add.label(' ')
 
-        self.menu.add.image(self.city_images.get_icon('crane'), scale=scale)
         self.build_mode_button = self.menu.add.button(
             "build mode", self.build_mode)
         self.menu.add.label(' ')
 
-        self.menu.add.image(self.city_images.get_icon(
-            'mesh-network'), scale=scale)
         self.build_mode_button = self.menu.add.button(
             "access", self.access)
         self.menu.add.label(' ')
 
-        self.menu.add.image(self.city_images.get_icon(
-            'settings-knobs'), scale=scale)
         self.options_button = self.menu.add.button(
             "options", self.options)
         self.menu.add.label(' ')

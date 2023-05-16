@@ -9,7 +9,7 @@ from game_engine_tools import WINDOW_SIZE, Singleton
 
 class LotGraphics(metaclass=Singleton):
     zone_colors = {'residential': 0x60d394,
-                   'commercial': 0x8fb8ed,
+                   'service': 0x8fb8ed,
                    'industrial': 0xffd97d}
     animation_speed = 0.05
     map_dimensions = None

@@ -1,7 +1,7 @@
-# City Simulation Game
+# Gridopolis
 
 ## Table of Contents
-- [City Simulation Game](#city-simulation-game)
+- [Gridopolis](#city-simulation-game)
   - [Table of Contents](#table-of-contents)
   - [General Information](#general-information)
   - [Technologies Used](#technologies-used)
@@ -12,7 +12,7 @@
 
 
 ## General Information
-Created as a project for a Python Programming class at the AGH UST, **City Simulation Game** (or **CSG** for short) is a 2D sandbox game that lets you design, build and manage your own city. 
+Created as a project for a Python Programming class at the AGH UST, **Gridopolis** (or **CSG** for short) is a 2D sandbox game that lets you design, build and manage your own city. 
 
 
 ## Technologies Used
@@ -23,8 +23,8 @@ Created as a project for a Python Programming class at the AGH UST, **City Simul
 
 
 ## Premise and Features
-- Place residential, commercial and industrial buildings by drawing special zones.
-- Buy other special buildings that affect city's statistics such as residents' happiness or city resources.
+- Place residential, service and industrial buildings by drawing special zones.
+- Buy other special buildings that affect city's statistics such as residents' satisfaction or city resources.
 - Add roads that connect constructs on the map and introduce traffic.
 - Upgrade the infrastructure to increase city's wellbeing.
 - Do your best to prevent unwanted events such as fires, burglaries or pandemics...
