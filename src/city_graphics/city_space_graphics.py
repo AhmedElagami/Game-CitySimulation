@@ -2,7 +2,7 @@ import pygame as pg
 
 from city_graphics import ROAD_WIDTH_RATIO
 from city_graphics.city_images import CityImages
-from city_graphics.lot_graphics import LotGraphics
+from city_graphics.field_graphics import FieldGraphics
 from city_graphics.road_graphics import RoadGraphics
 from game_engine_tools import WINDOW_SIZE, Singleton
 
@@ -17,10 +17,10 @@ class CitySpaceGraphics(metaclass=Singleton):
         self.city_images = CityImages()
 
         self.road_graphics = RoadGraphics((width, height))
-        self.lot_graphics = LotGraphics((width, height))
+        self.field_graphics = FieldGraphics((width, height))
 
         RoadGraphics.reset()
-        LotGraphics.reset()
+        FieldGraphics.reset()
 
         self.height = height  # amount of fields in height
         self.width = width  # amount of fields in width
@@ -32,22 +32,22 @@ class CitySpaceGraphics(metaclass=Singleton):
                           WINDOW_SIZE[0] // self.width + 1])  # defines the zoom level
         self.move_speed = (0, 0)  # added to pov in each frame
 
-        self.selected_lot = None
+        self.selected_field = None
 
     def draw(self, mode, construct_to_buy, window):
         # rescale images
         self.city_images.rescale(self.scale)
 
-        # draw lots
-        for row in self.city_space.lots:
-            for lot in row:
-                self.lot_graphics.draw_background(lot, self.scale, (self.pov_x, self.pov_y), window)
+        # draw fields
+        for row in self.city_space.fields:
+            for field in row:
+                self.field_graphics.draw_background(field, self.scale, (self.pov_x, self.pov_y), window)
 
         # faded picture of a construct to be placed and bought
         if construct_to_buy:
-            lot = self.get_clicked_lot(pg.mouse.get_pos())
+            field = self.get_clicked_field(pg.mouse.get_pos())
             image = pg.image.load(construct_to_buy.value['level'][0]['images'][0])
-            x, y = self.lot_graphics.get_draw_position(lot, (self.pov_x, self.pov_y), self.scale)
+            x, y = self.field_graphics.get_draw_position(field, (self.pov_x, self.pov_y), self.scale)
 
             # calculating faded picture's dimensions and rescaling
             offset = int(ROAD_WIDTH_RATIO * self.scale)
@@ -62,7 +62,7 @@ class CitySpaceGraphics(metaclass=Singleton):
             alpha = pg.Surface((scale, scale))
             alpha.set_alpha(128)
 
-            if not lot.can_place(construct_to_buy):
+            if not field.can_place(construct_to_buy):
                 alpha.fill((255, 0, 0))
             else:
                 alpha.fill((50, 50, 50))
@@ -74,9 +74,9 @@ class CitySpaceGraphics(metaclass=Singleton):
         self.road_graphics.draw(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
 
         # constructs
-        for row in self.city_space.lots:
-            for lot in row:
-                self.lot_graphics.draw_construct(lot, self.scale, (self.pov_x, self.pov_y), window)
+        for row in self.city_space.fields:
+            for field in row:
+                self.field_graphics.draw_construct(field, self.scale, (self.pov_x, self.pov_y), window)
 
         # cars
         self.road_graphics.animate_cars(self.city_space.road_system, (self.pov_x, self.pov_y), self.scale, window)
@@ -113,7 +113,7 @@ class CitySpaceGraphics(metaclass=Singleton):
                          self.scale * self.height // 2)
 
     def hovered(self, pos, mode):
-        """hovered lot highlighting"""
+        """hovered field highlighting"""
         if mode == "road_placing":
             self.city_space.road_system.hovered(self.get_clicked_road(pos))
 
@@ -132,11 +132,11 @@ class CitySpaceGraphics(metaclass=Singleton):
         self.pov_x -= int((mouse_x - self.pov_x) * (self.scale / old_scale - 1))
         self.pov_y -= int((mouse_y - self.pov_y) * (self.scale / old_scale - 1))
 
-    def select_lot(self, mouse_pos):
-        clicked_lot = self.get_clicked_lot(mouse_pos)
-        self.selected_lot = clicked_lot
+    def select_field(self, mouse_pos):
+        clicked_field = self.get_clicked_field(mouse_pos)
+        self.selected_field = clicked_field
 
-    def get_clicked_lot(self, mouse_pos):
+    def get_clicked_field(self, mouse_pos):
         if mouse_pos is None:
             return None
         x = (mouse_pos[0] - self.pov_x +
@@ -144,7 +144,7 @@ class CitySpaceGraphics(metaclass=Singleton):
         y = (mouse_pos[1] - self.pov_y +
              self.scale * self.height // 2) // self.scale
         if 0 <= x < self.width and 0 <= y < self.height:
-            return self.city_space.lots[x][y]
+            return self.city_space.fields[x][y]
 
     def get_clicked_road(self, mouse_pos):
         if mouse_pos is None:
@@ -156,17 +156,17 @@ class CitySpaceGraphics(metaclass=Singleton):
         return x, y
 
     def highlight_access(self, window):
-        if self.selected_lot is None or self.selected_lot.construct is None:
+        if self.selected_field is None or self.selected_field.construct is None:
             return
 
-        self.lot_graphics.highlight_lot(self.selected_lot, (self.pov_x, self.pov_y), self.scale, self.AFFECTS_COLOR, window)
+        self.field_graphics.highlight_field(self.selected_field, (self.pov_x, self.pov_y), self.scale, self.AFFECTS_COLOR, window)
 
-        for lot in self.selected_lot.affects:
-            if lot == self.selected_lot:
+        for field in self.selected_field.affects:
+            if field == self.selected_field:
                 continue
-            self.lot_graphics.highlight_lot(lot, (self.pov_x, self.pov_y), self.scale, self.AFFECTED_COLOR, window)
+            self.field_graphics.highlight_field(field, (self.pov_x, self.pov_y), self.scale, self.AFFECTED_COLOR, window)
 
     @staticmethod
     def set_speed(speed):
-        LotGraphics.animation_speed = 0.05 * speed
+        FieldGraphics.animation_speed = 0.05 * speed
         RoadGraphics.car_speed = 0.02 * speed

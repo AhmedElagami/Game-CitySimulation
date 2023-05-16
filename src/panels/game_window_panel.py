@@ -73,7 +73,7 @@ class GameWindowPanel(Panel):
 
         if self.game_window.mode != "access_highlighting":
             self.game_window.mode = "access_highlighting"
-            self.game_window.city_graphics.select_lot(None)
+            self.game_window.city_graphics.select_field(None)
         else:
             self.game_window.mode = "game_mode"
             self.unselect_selected_widget()

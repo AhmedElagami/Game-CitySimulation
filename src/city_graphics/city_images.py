@@ -5,49 +5,49 @@ from time import time_ns
 import pygame as pg
 
 from city import HORIZONTAL
-from city.lot_type import LotType
+from city.field_type import FieldType
 from city_graphics import ROAD_WIDTH_RATIO
 from game_engine_tools import load_asset, get_asset_path, Singleton
 
 
 class CityImages(metaclass=Singleton):
-    """scaled and original background lot images"""
+    """scaled and original background field images"""
     current_scale = -1
 
     def __init__(self):
         self.main_images = {
-            LotType.GRASS: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER: load_asset('LotType', 'PNG', 'tile.png'),
+            FieldType.GRASS: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER: load_asset('FieldType', 'PNG', 'tile.png'),
 
-            LotType.WATER_RIGHT: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_LEFT: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_UP: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_DOWN: load_asset('LotType', 'PNG', 'tile.png'),
+            FieldType.WATER_RIGHT: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_LEFT: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_UP: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_DOWN: load_asset('FieldType', 'PNG', 'tile.png'),
 
-            LotType.WATER_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_CORNER_RIGHT_DOWN: load_asset('LotType', 'PNG', 'tile.png'),
+            FieldType.WATER_CORNER_LEFT_UP: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_CORNER_LEFT_DOWN: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_CORNER_RIGHT_UP: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_CORNER_RIGHT_DOWN: load_asset('FieldType', 'PNG', 'tile.png'),
 
-            LotType.WATER_IN_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_IN_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_IN_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'tile.png'),
-            LotType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
-                'LotType', 'PNG', 'tile.png')
+            FieldType.WATER_IN_CORNER_LEFT_UP: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_IN_CORNER_LEFT_DOWN: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_IN_CORNER_RIGHT_UP: load_asset('FieldType', 'PNG', 'tile.png'),
+            FieldType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
+                'FieldType', 'PNG', 'tile.png')
         }
 
         self.additional_images = {
-            LotType.GRASS: [
-                load_asset('LotType', 'PNG', f'tile.png') for i in [155, 156, 158, 160]
+            FieldType.GRASS: [
+                load_asset('FieldType', 'PNG', f'tile.png') for i in [155, 156, 158, 160]
             ],
-            LotType.WATER: [
-                load_asset('LotType', 'island.png')
+            FieldType.WATER: [
+                load_asset('FieldType', 'island.png')
             ]}
 
-        # chance of adding an addition image on specific lot type:
+        # chance of adding an addition image on specific field type:
         self.frequency = {
-            LotType.GRASS: 0.1,
-            LotType.WATER: 0.005
+            FieldType.GRASS: 0.1,
+            FieldType.WATER: 0.005
         }
 
         self.icons = {
@@ -98,11 +98,11 @@ class CityImages(metaclass=Singleton):
         self.scaled_vertical = pg.transform.scale(self.vertical_road, (int(scale * ROAD_WIDTH_RATIO), int(scale + scale * ROAD_WIDTH_RATIO)))
         self.scaled_horizontal = pg.transform.scale(self.horizontal_road, (int(scale + scale * ROAD_WIDTH_RATIO), int(scale * ROAD_WIDTH_RATIO)))
 
-    def get_images(self, lot_type, lot_seed):
-        seed(lot_seed)
-        images = [self.scaled_main_images[lot_type]]
-        if lot_type in self.scaled_additional_images and random() < self.frequency[lot_type]:
-            images += [choice(self.scaled_additional_images[lot_type])]
+    def get_images(self, field_type, field_seed):
+        seed(field_seed)
+        images = [self.scaled_main_images[field_type]]
+        if field_type in self.scaled_additional_images and random() < self.frequency[field_type]:
+            images += [choice(self.scaled_additional_images[field_type])]
         return images
 
     def get_icon(self, icon):

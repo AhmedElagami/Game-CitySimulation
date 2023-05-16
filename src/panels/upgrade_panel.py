@@ -15,24 +15,24 @@ class UpgradePanel(Panel):
 
         self.simulation = simulation
         self.control = False
-        self.lot = None
+        self.field = None
 
-    def set_lot(self, lot):
-        self.lot = lot
+    def set_field(self, field):
+        self.field = field
         self.menu.clear()
 
         # IMAGE & INFO
-        info = lot.construct.get_level()
+        info = field.construct.get_level()
 
         self.menu.add.image(
-            lot.construct.image_path,
-            scale=(self.IMAGE_SIZE / lot.construct.image.get_width(),
-                   self.IMAGE_SIZE / lot.construct.image.get_width())
+            field.construct.image_path,
+            scale=(self.IMAGE_SIZE / field.construct.image.get_width(),
+                   self.IMAGE_SIZE / field.construct.image.get_width())
         )
 
-        if lot.construct_level + 1 in lot.construct.type['level']:
+        if field.construct_level + 1 in field.construct.type['level']:
             self.menu.add.label(
-                f'upgrade cost: {lot.construct.type["level"][lot.construct_level + 1]["upgrade_cost"]}')
+                f'upgrade cost: {field.construct.type["level"][field.construct_level + 1]["upgrade_cost"]}')
             self.menu.add.button('UPGRADE', self.upgrade)
 
         self.menu.add.label('')
@@ -41,27 +41,27 @@ class UpgradePanel(Panel):
                 continue
             self.menu.add.label(
                 f'{key.replace("_", " ")}: {value}', max_char=30)
-        self.menu.add.label(f'max level: {len(lot.construct.type["level"])}')
+        self.menu.add.label(f'max level: {len(field.construct.type["level"])}')
         self.menu.add.label(
-            'Heat: ' + str(lot.construct.heat), max_char=30)
+            'Heat: ' + str(field.construct.heat), max_char=30)
         self.menu.add.label(
-            'Crime: ' + str(lot.construct.crime_level), max_char=30)
+            'Crime: ' + str(field.construct.crime_level), max_char=30)
         self.menu.add.label(
-            'satisfaction: ' + str(lot.construct.satisfaction), max_char=30)
+            'satisfaction: ' + str(field.construct.satisfaction), max_char=30)
 
         self.menu.add.label(
-            f'COST: {lot.construct.type["cost"]}')
+            f'COST: {field.construct.type["cost"]}')
 
         self.menu.force_surface_cache_update()
 
     def upgrade(self):
         self.control = not self.control
-        if self.control and self.simulation.can_buy(construct=ConstructType[self.lot.construct.type_name],
-                                                    level=self.lot.construct_level + 1):
-            self.simulation.integrate_construct(self.lot, remove=True)
-            self.lot.construct.level_up()
-            self.lot.construct_level += 1
-            self.simulation.integrate_construct(self.lot)
+        if self.control and self.simulation.can_buy(construct=ConstructType[self.field.construct.type_name],
+                                                    level=self.field.construct_level + 1):
+            self.simulation.integrate_construct(self.field, remove=True)
+            self.field.construct.level_up()
+            self.field.construct_level += 1
+            self.simulation.integrate_construct(self.field)
             self.menu.disable()
 
     def get_theme(self):

@@ -23,10 +23,10 @@ class SimulationEngine:
         self.player_status = PlayerStatus(save_data.get('world_state', None))
         self.city_space = city_space
         self.fps_in_cycle = 0
-        self.road_graph = RoadNetGraph(self.city_space.road_system, self.city_space.lots)
-        for row in self.city_space.lots:
-            for lot in row:
-                self.integrate_construct(lot, from_save=True)
+        self.road_graph = RoadNetGraph(self.city_space.road_system, self.city_space.fields)
+        for row in self.city_space.fields:
+            for field in row:
+                self.integrate_construct(field, from_save=True)
 
     def simulate_cycle(self):
         if self.fps_in_cycle >= self.fps_per_cycle:
@@ -34,11 +34,11 @@ class SimulationEngine:
             self.fps_in_cycle = 0
             old_satisfaction = self.player_status.data['resident_satisfaction']
             self.player_status.data['resident_satisfaction'] = 0
-            for row in self.city_space.lots:
-                for lot in row:
+            for row in self.city_space.fields:
+                for field in row:
                     for simulation in SIMULATIONS:
-                        simulation(lot, self.player_status)
-                    self.player_status.data['resident_satisfaction'] += calculate_satisfaction(lot)
+                        simulation(field, self.player_status)
+                    self.player_status.data['resident_satisfaction'] += calculate_satisfaction(field)
             self.player_status.data['resident_satisfaction'] = normalize_satisfaction(
                 self.player_status.data['resident_satisfaction'], old_satisfaction)
             satisfy_demand(self.player_status)
@@ -56,11 +56,11 @@ class SimulationEngine:
     def funds_change_by(self, construct, multiplier=1.):
         self.player_status.data['funds'] -= construct.type['cost'] * multiplier
 
-    def integrate_construct(self, lot, remove=False, from_save=False):
-        construct = lot.construct
+    def integrate_construct(self, field, remove=False, from_save=False):
+        construct = field.construct
 
         if construct is not None:
-            self.road_graph.update_lot(lot, remove)
+            self.road_graph.update_field(field, remove)
             self.player_status.data['residences'] += (-1 if remove else 1) if construct.likes('home') else 0
             if not from_save:
                 if construct.likes('home'):
@@ -72,35 +72,35 @@ class SimulationEngine:
                     'resident_satisfaction_multiplier', 1))
 
                 ind = [
-                    (i, row.index(lot))
-                    for i, row in enumerate(self.city_space.lots)
-                    if lot in row
+                    (i, row.index(field))
+                    for i, row in enumerate(self.city_space.fields)
+                    if field in row
                 ]
                 current_row, current_column = ind[0]
 
-                row_range = make_safe_range(0, len(self.city_space.lots))
-                col_range = make_safe_range(0, len(self.city_space.lots[0]))
+                row_range = make_safe_range(0, len(self.city_space.fields))
+                col_range = make_safe_range(0, len(self.city_space.fields[0]))
                 for row in row_range(current_row - construct_range, current_row + construct_range + 1):
                     for col in col_range(current_column - construct_range, current_column + construct_range + 1):
                         if row != current_row or col != current_column:
-                            affected_lot = self.city_space.lots[row][col]
+                            affected_field = self.city_space.fields[row][col]
                             if remove:
-                                affected_lot.unpolluted /= (1 - pollution)
+                                affected_field.unpolluted /= (1 - pollution)
                             else:
-                                affected_lot.unpolluted *= (1 - pollution)
-                            if affected_lot.construct is not None and affected_lot.construct.satisfaction is not None:
+                                affected_field.unpolluted *= (1 - pollution)
+                            if affected_field.construct is not None and affected_field.construct.satisfaction is not None:
                                 if remove:
-                                    affected_lot.construct.satisfaction /= satisfaction_multiplier
+                                    affected_field.construct.satisfaction /= satisfaction_multiplier
                                 else:
-                                    affected_lot.construct.satisfaction *= satisfaction_multiplier
+                                    affected_field.construct.satisfaction *= satisfaction_multiplier
 
                 if remove:
-                    self.funds_change_by(lot.construct, -MONEY_RETURN_PERCENT)
+                    self.funds_change_by(field.construct, -MONEY_RETURN_PERCENT)
                 else:
-                    self.funds_change_by(lot.construct)
-                    if lot.construct.likes('home'):
-                        for affecting_construct in list(lot.affected_by):
-                            lot.construct.satisfaction *= affecting_construct.get(
+                    self.funds_change_by(field.construct)
+                    if field.construct.likes('home'):
+                        for affecting_construct in list(field.affected_by):
+                            field.construct.satisfaction *= affecting_construct.get(
                                 'resident_satisfaction_multiplier', 1)
 
     def change_speed(self, ind):

@@ -44,7 +44,7 @@ class RoadSystem:
     def get_road_count(self):
         return len(self.vertical) + len(self.horizontal)
 
-    def road_clicked(self):
+    def handle_road_clicked(self):
         if self.hovered_road is None:
             return
         if self.hovered_direction == VERTICAL and self.hovered_road in self.vertical:

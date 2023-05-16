@@ -2,7 +2,7 @@ import pygame as pg
 
 from city.city_space import CitySpace
 from city_graphics.city_space_graphics import CitySpaceGraphics
-from city_graphics.lot_graphics import LotGraphics
+from city_graphics.field_graphics import FieldGraphics
 from game_engine_tools import WINDOW_SIZE
 from game_engine_tools.simulation_engine import SimulationEngine
 from game_modes.game_mode import GameMode
@@ -127,10 +127,10 @@ class GameplayMode(GameMode):
             if event.button == pg.BUTTON_LEFT:
                 self.button_down = True
                 if self.construct_to_buy:
-                    clicked_lot = self.city_graphics.get_clicked_lot(
+                    clicked_field = self.city_graphics.get_clicked_field(
                         pg.mouse.get_pos())
-                    if clicked_lot.set_construct(self.construct_to_buy):
-                        self.simulator.integrate_construct(clicked_lot)
+                    if clicked_field.set_construct(self.construct_to_buy):
+                        self.simulator.integrate_construct(clicked_field)
                         self.construct_to_buy = None
                         bought = True
 
@@ -138,11 +138,11 @@ class GameplayMode(GameMode):
                 if event.button == pg.BUTTON_RIGHT:
                     self.city_space.road_system.hovered_direction *= -1
                 elif event.button == pg.BUTTON_LEFT:
-                    self.city_space.road_clicked()
+                    self.city_space.handle_road_clicked()
 
             elif not self.zoning:
                 if event.button == pg.BUTTON_LEFT:
-                    self.city_graphics.select_lot(pg.mouse.get_pos())
+                    self.city_graphics.select_field(pg.mouse.get_pos())
                     if not self.bulldozing and not bought and self.mode != 'access_highlighting':
                         self.set_upgrade_panel()
 
@@ -151,17 +151,17 @@ class GameplayMode(GameMode):
                 self.city_graphics.zoom(1 / self.ZOOM_VALUE)
 
         if event.type == pg.MOUSEMOTION or event.type or event.type == pg.MOUSEBUTTONDOWN:
-            clicked_lot = self.city_graphics.get_clicked_lot(
+            clicked_field = self.city_graphics.get_clicked_field(
                 pg.mouse.get_pos())
             if self.button_down:
                 if self.zoning and self.simulator.can_buy(zone=self.zoning_type):
-                    if clicked_lot and clicked_lot.set_zone(self.zoning_type):
-                        self.simulator.integrate_construct(clicked_lot)
+                    if clicked_field and clicked_field.set_zone(self.zoning_type):
+                        self.simulator.integrate_construct(clicked_field)
 
                 elif self.bulldozing:
-                    if clicked_lot and clicked_lot.remove_construct():
+                    if clicked_field and clicked_field.remove_construct():
                         self.simulator.integrate_construct(
-                            clicked_lot, remove=True)
+                            clicked_field, remove=True)
 
             else:
                 self.city_graphics.hovered(
@@ -179,7 +179,7 @@ class GameplayMode(GameMode):
             self.warning_panel.draw(self.window)
 
     def set_zoning(self, zoning_type):
-        LotGraphics.zone_highlighting = True
+        FieldGraphics.zone_highlighting = True
         if not self.zoning:
             self.zoning = True
             self.zoning_type = zoning_type
@@ -193,15 +193,15 @@ class GameplayMode(GameMode):
     @staticmethod
     def toggle_zone_highlighting(enabled=None):
         if enabled is not None:
-            LotGraphics.zone_highlighting = enabled
+            FieldGraphics.zone_highlighting = enabled
         else:
-            LotGraphics.zone_highlighting = not LotGraphics.zone_highlighting
+            FieldGraphics.zone_highlighting = not FieldGraphics.zone_highlighting
 
     def set_upgrade_panel(self):
         """display a panel showing construct info with an upgrade option"""
-        lot = self.city_graphics.get_clicked_lot(pg.mouse.get_pos())
-        if lot.construct:
-            self.upgrade_panel.set_lot(lot)
+        field = self.city_graphics.get_clicked_field(pg.mouse.get_pos())
+        if field.construct:
+            self.upgrade_panel.set_field(field)
             self.upgrade_panel.enable()
         else:
             self.upgrade_panel.disable()

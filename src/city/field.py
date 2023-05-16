@@ -1,11 +1,11 @@
 from random import randint
 
-from city.lot_type import LotType
+from city.field_type import FieldType
 from constructs.construct import Construct
 from constructs.construct_type import ConstructType
 
 
-class Lot:
+class Field:
     def __init__(self, x, y, type_, save_source=None):
         self.type = type_
 
@@ -30,7 +30,7 @@ class Lot:
 
         # reading from save file
         if save_source is not None:
-            self.type = LotType(save_source['type_value'])
+            self.type = FieldType(save_source['type_value'])
             self.zone_type = save_source['zone_type']
             self.seed = save_source['seed']
             if not save_source['construct'] is None:
@@ -56,7 +56,7 @@ class Lot:
 
     def set_construct(self, construct_type):
         """
-            sets bought construct with specified type if lot available
+            sets bought construct with specified type if field available
             returns True if could place the building, False otherwise
         """
         if not self.can_place(construct_type):
@@ -67,7 +67,7 @@ class Lot:
 
     def remove_construct(self):
         """
-            used as to bulldoze the construct on this lot
+            used as to bulldoze the construct on this field
             returns True if there is anything to remove
         """
         if self.construct is None:
@@ -80,11 +80,11 @@ class Lot:
         return True
 
     def can_place(self, construct_type):
-        """returns True if a construct can be placed on currently highlighted lot"""
+        """returns True if a construct can be placed on currently highlighted field"""
         construct = Construct(construct_type=construct_type)
-        type = LotType.GRASS
+        type = FieldType.GRASS
         if construct.likes('water'):
-            type = LotType.WATER
+            type = FieldType.WATER
 
         return self.construct is None and self.type == type
 
