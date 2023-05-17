@@ -12,7 +12,8 @@ class Building:
         if construct_state:
             self.construct_level = int(construct_state['construct_level'])
             self.type_name = construct_state['type']
-            self.type = BuildingType[self.type_name].value
+            if BuildingType != None:
+                self.type = BuildingType[self.type_name].value
 
             self.satisfaction = None if construct_state['satisfaction'] is None else float(
                 construct_state['satisfaction'])

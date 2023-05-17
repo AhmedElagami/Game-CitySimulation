@@ -1,7 +1,7 @@
 import os
 import pygame as pg
 
-WINDOW_SIZE = (1920, 1020)
+WINDOW_SIZE = (1700, 800)
 FPS = 60
 
 

@@ -1,0 +1,20 @@
+image: python:latest
+
+
+before_script:
+  - apt-get update; apt-get install make
+  - apt-get install python3-pip --yes
+  - apt-get install -y zip --yes
+  - pip install -r requirements.txt
+
+
+testing:
+  script:
+  - make test
+
+deploy:
+  script:
+    - make setup
+  artifacts:
+    paths:
+      - *.zip
