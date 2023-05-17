@@ -4,6 +4,7 @@ test:
 	python3 src/tests/city_test.py
 
 setup:
+	rm build.zip
 	python3 src/setup.py build
 	zip -r build.zip build
 
