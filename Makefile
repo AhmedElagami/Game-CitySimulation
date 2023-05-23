@@ -1,10 +1,8 @@
-test: 
-	python3 src/tests/graph_test.py
-	python3 src/tests/game_test.py
-	python3 src/tests/city_test.py
+test:
+	python3 src/test.py
 
 setup:
-	rm build.zip
+	[ -e build.zip ] && rm build.zip ; echo "No build yet"
 	python3 src/setup.py build
 	zip -r build.zip build
 
