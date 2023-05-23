@@ -19,6 +19,63 @@ from city.field_type import FieldType
 from constructs.building import Building
 from constructs.buildingType import BuildingType
 from city.field import Field
+from city.field_type import FieldType
+from city.road_system import RoadSystem
+from city.city import City
+
+# class CityTestCase(unittest.TestCase):
+
+#     def test_reset_fields_with_no_save_source(self):
+#         city = City(width=3, height=3)
+#         expected_fields = [
+#             [Field(0, 0, FieldType.WATER), Field(0, 1, FieldType.GRASS), Field(0, 2, FieldType.WATER)],
+#             [Field(1, 0, FieldType.GRASS), Field(1, 1, FieldType.GRASS), Field(1, 2, FieldType.GRASS)],
+#             [Field(2, 0, FieldType.WATER), Field(2, 1, FieldType.GRASS), Field(2, 2, FieldType.WATER)]
+#         ]
+#         self.assertEqual(city.fields, expected_fields)
+
+#     def test_reset_fields_with_save_source(self):
+#         save_source = {
+#             'fields': [
+#                 [{'type': 'GRASS'}, {'type': 'WATER'}, {'type': 'GRASS'}],
+#                 [{'type': 'GRASS'}, {'type': 'WATER'}, {'type': 'GRASS'}],
+#                 [{'type': 'GRASS'}, {'type': 'WATER'}, {'type': 'GRASS'}]
+#             ],
+#             'roads': {'vertical': [], 'horizontal': []}
+#         }
+#         city = City(width=3, height=3, save_source=save_source)
+#         expected_fields = [
+#             [Field(0, 0, FieldType.GRASS), Field(0, 1, FieldType.WATER), Field(0, 2, FieldType.GRASS)],
+#             [Field(1, 0, FieldType.GRASS), Field(1, 1, FieldType.WATER), Field(1, 2, FieldType.GRASS)],
+#             [Field(2, 0, FieldType.GRASS), Field(2, 1, FieldType.WATER), Field(2, 2, FieldType.GRASS)]
+#         ]
+#         self.assertEqual(city.fields, expected_fields)
+
+#     def test_handle_road_clicked(self):
+#         city = City(width=3, height=3)
+#         city.handle_road_clicked()
+#         self.assertEqual(city.road_system.changes, False)
+
+#     def test_compress2save(self):
+#         city = City(width=3, height=3)
+#         compressed_data = city.compress2save()
+#         expected_compressed_data = {
+#             'fields': [
+#                 [{'type': 'WATER', 'population': None, 'buildings': []},
+#                  {'type': 'GRASS', 'population': None, 'buildings': []},
+#                  {'type': 'WATER', 'population': None, 'buildings': []}],
+#                 [{'type': 'GRASS', 'population': None, 'buildings': []},
+#                  {'type': 'GRASS', 'population': None, 'buildings': []},
+#                  {'type': 'GRASS', 'population': None, 'buildings': []}],
+#                 [{'type': 'WATER', 'population': None, 'buildings': []},
+#                  {'type': 'GRASS', 'population': None, 'buildings': []},
+#                  {'type': 'WATER', 'population': None, 'buildings': []}]
+#             ],
+#             'roads': {'vertical': set(), 'horizontal': set()}
+#         }
+#         self.assertEqual(compressed_data, expected_compressed_data)
+
+
 
 
 class FieldTest(unittest.TestCase):
