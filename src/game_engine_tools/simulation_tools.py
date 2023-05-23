@@ -32,16 +32,16 @@ def security(field, player_status):
         field.construct.crime_level = set_between(
             field.construct.crime_level, MIN_CRIME, MAX_CRIME)
 
-def economy_change(field, player_status):
-    if field.construct is not None:
-        money_change = field.construct.get('taxation', 0)
-        taxes_multiplier = min(field.construct.satisfaction / satisfaction_FOR_FULL_TAXES,
-                               1) if not field.construct.satisfaction is None else 1
-        money_change *= (1 + player_status.data['taxation']) * taxes_multiplier
-        money_change += calculate_income(field.construct, player_status)
-        player_status.data['funds'] += int(money_change)
-        player_status.data['funds'] = set_between(
-            player_status.data['funds'], MIN_MONEY, MAX_MONEY)
+# def economy_change(field, player_status):
+#     if field.construct is not None:
+#         money_change = field.construct.get('taxation', 0)
+#         taxes_multiplier = min(field.construct.satisfaction / satisfaction_FOR_FULL_TAXES,
+#                                1) if not field.construct['satisfaction'] is None else 1
+#         money_change *= (1 + player_status.data['taxation']) * taxes_multiplier
+#         money_change += calculate_income(field.construct, player_status)
+#         player_status.data['funds'] += int(money_change)
+#         player_status.data['funds'] = set_between(
+#             player_status.data['funds'], MIN_MONEY, MAX_MONEY)
 
 
 
