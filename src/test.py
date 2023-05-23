@@ -5,6 +5,7 @@ from tests.building_test import *
 from tests.tracker_test import *
 import unittest
 
+
 if __name__ == "__main__":
 	loader = unittest.TestLoader()
 	suite = unittest.TestSuite()
