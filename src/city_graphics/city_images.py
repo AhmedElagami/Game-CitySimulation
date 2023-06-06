@@ -16,29 +16,7 @@ class CityImages(metaclass=Singleton):
 
     def __init__(self):
         self.main_images = {
-            FieldType.GRASS: load_asset('LotType', 'PNG', 'rpgTile039.png'),
-            FieldType.WATER: load_asset('LotType', 'PNG', 'rpgTile029.png'),
 
-            FieldType.WATER_RIGHT: load_asset('LotType', 'PNG', 'rpgTile030.png'),
-            FieldType.WATER_LEFT: load_asset('LotType', 'PNG', 'rpgTile028.png'),
-            FieldType.WATER_UP: load_asset('LotType', 'PNG', 'rpgTile011.png'),
-            FieldType.WATER_DOWN: load_asset('LotType', 'PNG', 'rpgTile045.png'),
-
-            FieldType.WATER_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile032.png'),
-            FieldType.WATER_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile014.png'),
-            FieldType.WATER_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile031.png'),
-            FieldType.WATER_CORNER_RIGHT_DOWN: load_asset('LotType', 'PNG', 'rpgTile013.png'),
-
-            FieldType.WATER_IN_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'rpgTile010.png'),
-            FieldType.WATER_IN_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'rpgTile044.png'),
-            FieldType.WATER_IN_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'rpgTile012.png'),
-            FieldType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
-                'LotType', 'PNG', 'rpgTile046.png')
-        }
-
-        self.additional_images = {
-            FieldType.GRASS: [
-                load_asset('LotType', 'PNG', f'rpgTile{i}.png') for i in [155, 156, 158, 160]
             ],
             FieldType.WATER: [
                 load_asset('LotType', 'island.png')

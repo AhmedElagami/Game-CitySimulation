@@ -16,9 +16,9 @@ class ConstructType(Enum):
                 'water_consumption': 3,  # in units (UNIFY)
                 'waste_change': 3,  # in units 
                 'taxation': 1200,  # in dollars; per person; multiply by happiness to get actual income
-                'images': [get_asset_path('House', 'Hs01.png'), get_asset_path('House', 'Hs02.png'),
-                           get_asset_path('House', 'Hs03.png'),
-                           get_asset_path('House', 'Hs00.png')]
+                'images': [get_asset_path('House', 'Hs01.png'), get_asset_path('House', 'Hs01.png'),
+                           get_asset_path('House', 'Hs01.png'),
+                           get_asset_path('House', 'Hs01.png')]
             },
             1: {
                 'name': 'family house',
@@ -29,7 +29,7 @@ class ConstructType(Enum):
                 'waste_change': 5,
                 'taxation': 1800,
                 'upgrade_cost': 800,
-                'images': [get_asset_path('House', 'H05.png')]
+                'images': [get_asset_path('House', 'H01.png')]
             },
             2: {
                 'name': 'large residence',
@@ -40,7 +40,7 @@ class ConstructType(Enum):
                 'waste_change': 8,
                 'taxation': 2300,
                 'upgrade_cost': 1000,
-                'images': [get_asset_path('House', 'H04.png'), get_asset_path('House', 'H06.png')]
+                'images': [get_asset_path('House', 'H01.png'), get_asset_path('House', 'H01.png')]
             }
         }
     }
@@ -58,7 +58,7 @@ class ConstructType(Enum):
                 'waste_change': 180,  # in units
                 'taxation': 420,  # in dollars; per person; multiply by happiness+1 to get actual income
                 'temperature_raise': 2,
-                'images': [get_asset_path('House', 'block0.png'), get_asset_path('House', 'block1.png')]
+                'images': [get_asset_path('House', 'block4.png'), get_asset_path('House', 'block4.png')]
             },
             1: {
                 'name': 'big block',
@@ -70,7 +70,7 @@ class ConstructType(Enum):
                 'taxation': 600,
                 'upgrade_cost': 10000,
                 'temperature_raise': 2,
-                'images': [get_asset_path('House', 'block3.png')]
+                'images': [get_asset_path('House', 'block4.png')]
             },
             2: {
                 'name': 'high end block',
@@ -100,8 +100,8 @@ class ConstructType(Enum):
                 'water_consumption': 5,
                 'waste_change': 20,
                 'resident_happiness_multiplier': 1.1,
-                'images': [get_asset_path('Shop', 'SH0.png'), get_asset_path('Shop', 'SH1.png'),
-                           get_asset_path('Shop', 'SH2.png')]
+                'images': [get_asset_path('Shop', 'SH1.png'), get_asset_path('Shop', 'SH1.png'),
+                           get_asset_path('Shop', 'SH1.png')]
             },
             1: {
                 'name': 'small shop',
@@ -113,8 +113,8 @@ class ConstructType(Enum):
                 'waste_change': 20,
                 'upgrade_cost': 2000,
                 'resident_happiness_multiplier': 1.1,
-                'images': [get_asset_path('Shop', 'SH0.png'), get_asset_path('Shop', 'SH1.png'),
-                           get_asset_path('Shop', 'SH2.png')]
+                'images': [get_asset_path('Shop', 'SH1.png'), get_asset_path('Shop', 'SH1.png'),
+                           get_asset_path('Shop', 'SH1.png')]
             },
             2: {
                 'name': 'shop',
@@ -127,7 +127,7 @@ class ConstructType(Enum):
                 'waste_change': 40,
                 'resident_happiness_multiplier': 1.2,
                 'upgrade_cost': 2000,
-                'images': [get_asset_path('Shop', 'SH3.png')]
+                'images': [get_asset_path('Shop', 'SH1.png')]
             }
         }
     }
@@ -165,7 +165,7 @@ class ConstructType(Enum):
                 'waste_change': 100,
                 'resident_happiness_multiplier': 1.6,
                 'range': 10,
-                'images': [get_asset_path('SpecialBuildings', 'hospital.png')]
+                'images': [get_asset_path('SpecialBuildings', 'block4.png')]
             },
             1: {
                 'name': 'hospital',
