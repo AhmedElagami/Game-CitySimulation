@@ -5,7 +5,7 @@ from time import time_ns
 import pygame as pg
 
 from city import HORIZONTAL
-from city.lot_type import LotType
+from city.field_type import FieldType
 from city_graphics import ROAD_WIDTH_RATIO
 from game_engine_tools import load_asset, get_asset_path, Singleton
 
@@ -16,38 +16,16 @@ class CityImages(metaclass=Singleton):
 
     def __init__(self):
         self.main_images = {
-            LotType.GRASS: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER: load_asset('LotType', 'PNG', 'grass.png'),
 
-            LotType.WATER_RIGHT: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_LEFT: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_UP: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_DOWN: load_asset('LotType', 'PNG', 'grass.png'),
-
-            LotType.WATER_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_CORNER_RIGHT_DOWN: load_asset('LotType', 'PNG', 'grass.png'),
-
-            LotType.WATER_IN_CORNER_LEFT_UP: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_IN_CORNER_LEFT_DOWN: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_IN_CORNER_RIGHT_UP: load_asset('LotType', 'PNG', 'grass.png'),
-            LotType.WATER_IN_CORNER_RIGHT_DOWN: load_asset(
-                'LotType', 'PNG', 'grass.png')
-        }
-
-        self.additional_images = {
-            LotType.GRASS: [
-                load_asset('LotType', 'PNG', f'grass.png') for i in [155, 156, 158, 160]
             ],
-            LotType.WATER: [
+            FieldType.WATER: [
                 load_asset('LotType', 'island.png')
             ]}
 
         # chance of adding an addition image on specific lot type:
         self.frequency = {
-            LotType.GRASS: 0.1,
-            LotType.WATER: 0.005
+            FieldType.GRASS: 0.1,
+            FieldType.WATER: 0.005
         }
 
         self.icons = {

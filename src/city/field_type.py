@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class LotType(Enum):
+class FieldType(Enum):
     GRASS = 1
     WATER = 2
 

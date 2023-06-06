@@ -101,10 +101,10 @@ class RoadGraphics(metaclass=Singleton):
 
     def animate_cars(self, roads, pov, scale, window):
         self.update_cars()
-        if len(self.cars) < self.CARS_TO_ROADS_RATIO * (roads.get_road_count()):
+        if len(self.cars) < self.CARS_TO_ROADS_RATIO * (roads.getRoadsCount()):
             self.add_car(roads)
 
-        if len(self.cars) > 2 * self.CARS_TO_ROADS_RATIO * (roads.get_road_count()):
+        if len(self.cars) > 2 * self.CARS_TO_ROADS_RATIO * (roads.getRoadsCount()):
             self.cars.pop()
 
         for car in self.cars:
