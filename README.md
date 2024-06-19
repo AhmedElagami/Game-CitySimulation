@@ -46,11 +46,3 @@ All of them are listed in the requirements.txt file. You can download everything
 <!-- ## Room for Improvement
 *  -->
 
-
-## Credits
-
-Created by:
-[@mhawryluk](https://www.github.com/mhawryluk) and [@Singularity23x0](https://www.github.com/Singularity23x0)
-
-Game graphics created from modification of assets aquired at:
-- https://opengameart.org/
